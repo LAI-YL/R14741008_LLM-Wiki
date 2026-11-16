@@ -200,6 +200,21 @@
   }
   const backTo = (href, text) => `<a class="back" href="${href}">← ${text}</a>`;
   // 來源頁的「待查證／疑點」是維護用資訊：網站上預設收合（Markdown 原檔不變）
+  // 前台頁面不顯示任何資料來源：移除「來源」段落，指向後台（維護者專區）的連結改成純文字
+  function stripBackstage(root) {
+    root.querySelectorAll("h2").forEach((h) => {
+      if (h.textContent.trim() !== "來源") return;
+      let n = h.nextElementSibling;
+      while (n && n.tagName !== "H2") { const next = n.nextElementSibling; n.remove(); n = next; }
+      h.remove();
+    });
+    root.querySelectorAll("a[href^='#/']").forEach((a) => {
+      if (!isAdminRoute(a.getAttribute("href"))) return;
+      const span = document.createElement("span");
+      span.innerHTML = a.innerHTML;
+      a.replaceWith(span);
+    });
+  }
   function foldTodo(root) {
     root.querySelectorAll("h2").forEach((h) => {
       if (!h.textContent.includes("待查證")) return;
@@ -235,11 +250,19 @@
     if (!allLoaded) await loadAll();
     const back = wikiBacklinks(slug);
     const nback = noteBacklinks(slug);
+    // 資料來源頁（後台）：列出 frontmatter 的 sources 引用了這份來源的 wiki 頁面
+    const citing = src ? [...pages.values()].filter((q) => {
+      const d = cache.get(q.path); const list = d && d.meta.sources;
+      return Array.isArray(list) && list.includes(slug);
+    }) : [];
     renderInto(content, `${src ? backTo("#/admin", "維護者專區") : ""}${metaBar(meta)}<article class="md">${MD.render(body, ctxFor("wiki/"))}</article>
-      <section class="backlinks"><h4>反向連結（${back.length}）— 哪些頁面提到這一頁</h4>
+      <section class="backlinks">${src
+        ? `<h4>引用這份來源的 wiki 頁面（${citing.length}）</h4>${citing.map((q) => chip(`#/p/${q.slug}`, esc(q.title))).join("")}`
+        : `<h4>反向連結（${back.length}）— 哪些頁面提到這一頁</h4>
       ${back.length ? back.map((b) => chip(`#/p/${b.slug}`, esc(b.title))).join("") : '<span class="muted">目前沒有其他頁面連到這裡</span>'}
-      ${nback.length ? `<h4 class="sub">引用這一頁的研究筆記（${nback.length}）</h4>${nback.map((n) => chip(`#/n/${n.stem}`, esc(n.title))).join("")}` : ""}
+      ${nback.length ? `<h4 class="sub">引用這一頁的研究筆記（${nback.length}）</h4>${nback.map((n) => chip(`#/n/${n.stem}`, esc(n.title))).join("")}` : ""}`}
       </section>`);
+    if (!src) stripBackstage(content);
     foldTodo(content);
     document.title = `${meta.title || p.title}｜美國審計知識資料庫`;
   }
@@ -255,6 +278,7 @@
     const used = Array.isArray(meta.wiki_pages) ? meta.wiki_pages.length : 0;
     renderInto(content, `${backTo("#/", "講義庫")}${metaBar(meta, `<span class="tag-plain">依據 ${used} 個 wiki 頁面</span>`)}${actions}
       <article class="md">${MD.render(body, ctxFor("notes/"))}</article>`);
+    stripBackstage(content);
     document.title = `${meta.title || n.title}｜研究筆記`;
   }
 
@@ -366,6 +390,7 @@
         <a class="stat" href="#/"><b>${notes.size}</b><span>講義</span></a>
       </div>
       <article class="md">${MD.render(body.replace(/^#\s+.*\n/, ""), ctxFor("wiki/"))}</article>`);
+    stripBackstage(content);
     document.title = "知識庫｜美國審計知識資料庫";
   }
 
@@ -382,6 +407,7 @@
     // 每份來源的原始檔數取自 frontmatter 的 files（批次匯入時為整批檔案數，預設 1）
     const nFiles = (sl) => { const d = cache.get(pages.get(sl).path); const n = d && parseInt(d.meta.files, 10); return n > 0 ? n : 1; };
     const totalFiles = srcs.reduce((a, sl) => a + nFiles(sl), 0);
+    const nCiting = (sl) => [...pages.values()].filter((q) => { const d = cache.get(q.path); return d && Array.isArray(d.meta.sources) && d.meta.sources.includes(sl); }).length;
     const tile = (href, title, desc) => `<a class="admin-tile" href="${href}"><b>${title}</b><span>${desc}</span></a>`;
     renderInto(content, `<div class="page-meta"><span class="badge">維護者專區</span></div>
       <article class="md"><h1>維護者專區</h1>
@@ -393,8 +419,8 @@
         ${tile("#/log", "日誌", "所有 ingest、筆記、簡報、規則變更的紀錄")}
         ${tile("#/assets", "素材庫", "簡報可用的圖示、圖解與吉祥物")}
       </div>
-      <section class="md"><h2>資料來源（${totalFiles}）</h2><p class="muted">每份原始資料的摘要與「待查證／疑點」。</p>
-      <ul>${srcs.map((sl) => `<li><a href="#/p/${sl}">${esc(pages.get(sl).title)}</a>（${nFiles(sl)}）</li>`).join("")}</ul>
+      <section class="md"><h2>資料來源（${totalFiles}）</h2><p class="muted">每份原始資料的摘要、「待查證／疑點」，以及引用它的 wiki 頁面（前台頁面不顯示資料來源）。</p>
+      <ul>${srcs.map((sl) => `<li><a href="#/p/${sl}">${esc(pages.get(sl).title)}</a>（${nFiles(sl)}）<span class="muted">・引用頁面 ${nCiting(sl)}</span></li>`).join("")}</ul>
       <h2>簡報逐頁稿（${decks.size}）</h2><p class="muted">每份簡報的逐頁內容與講者備註；學習者直接從講義庫播放簡報。</p>
       <ul>${[...decks.values()].map((d) => `<li><a href="#/s/${d.slug}">${esc(d.title)}</a></li>`).join("")}</ul>
       <h2>最近更新</h2><ul>${recent}</ul></section>`);

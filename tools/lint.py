@@ -7,7 +7,7 @@
   error  frontmatter 缺欄位或 type 不合法；檔名不是小寫 slug；slug 重複；放錯資料夾
   error  [[wikilink]] 指向不存在的頁面；sources 指向不存在的 source 頁
   error  頁面沒有登記在 wiki/index.md；index.md 連到不存在的檔案；index.md 的標題與頁面 title 不一致
-  error  [!todo] 出現在 source 頁以外的 wiki 頁面
+  error  [!todo] 出現在 source 頁以外的 wiki 頁面；正文（「來源」段落以外）或筆記、逐頁稿連到資料來源頁
   warn   孤兒頁；「相關頁面」少於 2 個連結
 [notes]
   error  檔名不是 YYYY-MM-DD-slug；frontmatter 缺欄位；沒有登記在 notes/index.md
@@ -132,6 +132,15 @@ def check_images(text, where, is_slides=False):
             errors.append(f"{where}: 簡報不可使用吉祥物草稿 {src}")
 
 
+SRC_LINK_RE = re.compile(r"\[\[src-[^\]]*\]\]")
+
+
+def src_links_outside_sources(text):
+    """回傳「## 來源」段落以外出現的 [[src-…]]（資料來源屬於後台，前台頁面的正文不可提到）。"""
+    body = re.sub(r"(?ms)^## 來源\s*$.*?(?=^## |\Z)", "", strip_code(text))
+    return SRC_LINK_RE.findall(body)
+
+
 def index_entries(path):
     if not path.exists():
         return set()
@@ -169,6 +178,8 @@ for slug, p in pages.items():
         folder = p.parent.relative_to(WIKI).as_posix()
         if folder != (TYPE_DIR[t] or "."):
             errors.append(f"{where}: type 為 {t}，應放在 wiki/{TYPE_DIR[t]}")
+    if t != "source" and (bad := src_links_outside_sources(text)):
+        errors.append(f"{where}: 正文提到資料來源 {bad[0]}；資料來源只能寫在最後的「來源」段落（網站前台不顯示）")
     if t != "source" and TODO_RE.search(text):
         errors.append(f"{where}: [!todo] 只能用在 source 頁；不確定的內容請移到 source 頁的「待查證／疑點」")
     for s in parse_list(meta.get("sources", "")):
@@ -240,6 +251,8 @@ if NOTES.exists():
             errors.append(f"{where}: 檔名應為 YYYY-MM-DD-slug.md")
         note_stems[p.stem] = p
         text = p.read_text(encoding="utf-8")
+        if SRC_LINK_RE.search(text):
+            errors.append(f"{where}: 研究筆記不可連到資料來源頁（[[src-…]]），請改連 wiki 頁面")
         meta, body = parse_frontmatter(text)
         if meta is None:
             errors.append(f"{where}: 缺少 YAML frontmatter")
@@ -282,6 +295,8 @@ if SLIDES.exists():
         if not SLUG_RE.match(slug):
             errors.append(f"{where}: 檔名不是小寫英文 slug")
         text = p.read_text(encoding="utf-8")
+        if SRC_LINK_RE.search(text):
+            errors.append(f"{where}: 逐頁稿不可連到資料來源頁（[[src-…]]），請改連 wiki 頁面")
         meta, body = parse_frontmatter(text)
         if meta is None:
             errors.append(f"{where}: 缺少 YAML frontmatter")

@@ -2,6 +2,13 @@
 
 > 只能附加，最新的在最上面。標題格式：`## [YYYY-MM-DD] 動作 | 標題`，動作為 ingest／query／lint／schema／init。
 
+## [2026-11-16] schema | 前台完全不顯示資料來源
+- 網站：前台的 wiki 頁、知識庫總覽、研究筆記不再顯示「來源」段落；指向維護者專區的連結（資料來源頁、建議文獻清單等）改為純文字
+- 維護者專區：資料來源清單加上「引用頁面」數量；資料來源頁底部列出「引用這份來源的 wiki 頁面」
+- 內容：正文中提到資料來源的地方改寫為不指名的說法——[[fraud-risk]]、[[critical-audit-matters]]、[[single-audit]]、[[subsequent-events]]、[[as-3101]]、[[as-2201]]、[[at-c-320]]、[[emphasis-of-matter]]、[[overview]]；研究筆記（what-is-audit、ssae-services、subsequent-events-intro）與逐頁稿（what-is-audit、ssae-services）同步修改
+- lint 新增：wiki 正文（「來源」段落以外）、研究筆記、逐頁稿不可連到資料來源頁
+- `app.js`、`tools/lint.py` 修改，`index.html` 版本號更新為 `20261116h`；AGENTS.md 第 5、10 節同步更新
+
 ## [2026-11-16] lint | AS 2901 改列待查證
 - [[subsequent-events]]、[[pcaob-vs-aicpa-standards]]：PCAOB 對應準則由「AS 2901」改為「尚未確認」
 - [[pcaob-auditing-standards]]：AS 2000 系列的舉例中刪除「AS 2901 期後始獲知之事實」
