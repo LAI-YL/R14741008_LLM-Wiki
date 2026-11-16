@@ -60,6 +60,7 @@
       if (/^slides\/index\.md$/.test(p)) return "#/decks";
       if (/^slides\/.+\.md$/.test(p)) return `#/s/${stemOf(p)}`;
       if (/^raw\/_reading-list\.md$/.test(p)) return "#/reading";
+      if (/^docs\/.+\.md$/.test(p)) return `#/d/${p.slice(5).replace(/\.md$/, "")}`;
       return p;
     };
   }
@@ -242,6 +243,17 @@
     document.title = "素材庫｜美國審計知識資料庫";
   }
 
+  // 專案說明（docs/）：工作流程、執行紀錄、反思；與審計知識分開
+  async function showDoc(path) {
+    renderToc(null); setNav("docs");
+    if (!/^[\w\/-]+$/.test(path)) { content.innerHTML = notFound("專案說明"); return; }
+    let text;
+    try { text = await fetchText(`docs/${path}.md`); } catch (e) { content.innerHTML = notFound("專案說明"); return; }
+    const { meta, body } = MD.parseFrontmatter(text);
+    const dir = "docs/" + (path.includes("/") ? path.slice(0, path.lastIndexOf("/") + 1) : "");
+    renderInto(content, `<div class="page-meta"><span class="badge">專案說明</span>${path !== "index" ? ' <a href="#/d/index">← 專案說明首頁</a>' : ""}</div><article class="md">${MD.render(body, ctxFor(dir))}</article>`);
+    document.title = `${(meta && meta.title) || "專案說明"}｜美國審計知識資料庫`;
+  }
   async function showLog() {
     renderToc(null); setNav("log");
     const text = await fetchText("wiki/log.md");
@@ -288,6 +300,8 @@
       if (hash === "#/reading") return await showReading();
       if (hash === "#/assets") return await showAssets();
       if (hash === "#/log") return await showLog();
+      if (hash === "#/docs") return await showDoc("index");
+      if (hash.startsWith("#/d/")) return await showDoc(hash.slice(4));
       return await showHome();
     } catch (e) {
       content.innerHTML = `<h1>載入失敗</h1><p class="muted">${esc(e.message)}</p>`;

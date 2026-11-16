@@ -17,6 +17,7 @@
 [slides / decks]
   error  逐頁稿 frontmatter 缺欄位；note 指向不存在的筆記；slug 與筆記不一致
   error  頁型不合法；wikilink 斷掉；沒有登記在 slides/index.md
+  error  缺少教學結構：先想一想、學習目標、小測驗＋解答、最後一頁總結
   error  decks/<slug>/index.html 不存在，或與 templates/deck.html 不同
   error  缺少封面副標題 subtitle；副標題是通用句或模板文字；與其他簡報副標題重複
   warn   封面頁的副標題與 frontmatter 的 subtitle 不一致
@@ -314,11 +315,29 @@ if SLIDES.exists():
                 errors.append(f"{where}: 第 {n} 頁是 {parts[i]}，但沒有獨立一行的圖片")
             if parts[i] not in ("cover", "agenda", "section") and not re.search(r"^來源[:：]", parts[i + 1], re.M):
                 warns.append(f"{where}: 第 {n} 頁沒有「來源：」")
+        # 教學結構：先想一想 → 學習目標 → … → 小測驗＋解答 → 總結
+        heads = []
+        for i in range(1, len(parts), 2):
+            m = re.search(r"^#{1,2}\s+(.+)$", parts[i + 1], re.M)
+            heads.append((parts[i], m.group(1).strip() if m else ""))
+        if heads:
+            if not any(h.startswith("先想一想") for _, h in heads):
+                errors.append(f"{where}: 缺少開場問題頁（標題「先想一想」）")
+            if not any(t == "agenda" and h.startswith("學習目標") for t, h in heads):
+                errors.append(f"{where}: 缺少學習目標頁（agenda，標題「學習目標」）")
+            quiz = [k for k, (_, h) in enumerate(heads) if h.startswith("小測驗")]
+            if not quiz:
+                errors.append(f"{where}: 至少要有一題小測驗（標題以「小測驗」開頭）")
+            for k in quiz:
+                if k + 1 >= len(heads) or not heads[k + 1][1].startswith("解答"):
+                    errors.append(f"{where}: 第 {k + 1} 頁小測驗的下一頁必須是「解答」")
+            if heads[-1][0] != "summary":
+                errors.append(f"{where}: 最後一頁必須是 summary（總結）")
         if slug not in slides_index:
             errors.append(f"{where}: 沒有登記在 slides/index.md")
         deck = DECKS / slug / "index.html"
         if not deck.exists():
-            errors.append(f"{where}: 缺少播放器 decks/{slug}/index.html（請複製 templates/deck.html）")
+            warns.append(f"{where}: 尚未產生播放器 decks/{slug}/index.html（逐頁稿經使用者確認後，依 6.7 複製 templates/deck.html）")
         elif template is not None and deck.read_text(encoding="utf-8") != template:
             errors.append(f"decks/{slug}/index.html: 內容與 templates/deck.html 不同（播放器不可個別修改）")
     for s in slides_index - slide_slugs:
@@ -327,6 +346,14 @@ if DECKS.exists():
     for d in sorted(DECKS.iterdir()):
         if d.is_dir() and d.name != "_shared" and d.name not in slide_slugs:
             errors.append(f"decks/{d.name}/: 沒有對應的 slides/{d.name}.md")
+
+# ================= docs =================
+DOCS = ROOT / "docs"
+if DOCS.exists():
+    for p in sorted(DOCS.rglob("*.md")):
+        t = p.read_text(encoding="utf-8")
+        check_links(t, rel(p), pages)
+        check_images(t, rel(p))
 
 # ================= assets =================
 for src in sorted(REGISTERED):

@@ -12,3 +12,7 @@
 
 | ID | 文獻 | 機構 | 下載 | 狀態 | 來自筆記 | 可能更新的頁面 | 加入日期 |
 |---|---|---|---|---|---|---|---|
+| R001 | Investor Bulletin: Why Audits Matter | PCAOB | [網頁](https://pcaobus.org/resources/information-for-investors/investor-advisories/investor-bulletin-why-audits-matter) | 待下載 | [審計是什麼？從風險到意見](../notes/2026-11-16-what-is-audit.md) | [[overview]] | 2026-11-16 |
+| R002 | AS 1000: General Responsibilities of the Auditor in Conducting an Audit | PCAOB | [網頁](https://pcaobus.org/oversight/standards/auditing-standards/details/as-1000--general-responsibilities-of-the-auditor-in-conducting-an-audit) | 待下載 | [審計是什麼？從風險到意見](../notes/2026-11-16-what-is-audit.md) | [[pcaob-auditing-standards]]、[[audit-risk-model]] | 2026-11-16 |
+| R003 | AS 1105: Audit Evidence | PCAOB | [網頁](https://pcaobus.org/Standards/Auditing/Pages/AS1105.aspx) | 待下載 | [審計是什麼？從風險到意見](../notes/2026-11-16-what-is-audit.md) | [[pcaob-auditing-standards]]、[[external-confirmations]] | 2026-11-16 |
+| R004 | Investor Bulletin: The Importance of Auditor Professional Responsibilities and Ethics | PCAOB | [網頁](https://pcaobus.org/resources/information-for-investors/investor-advisories/investor-bulletin--the-importance-of-auditor-professional-responsibilities-and-ethics) | 待下載 | [審計是什麼？從風險到意見](../notes/2026-11-16-what-is-audit.md) | [[auditor-independence]] | 2026-11-16 |

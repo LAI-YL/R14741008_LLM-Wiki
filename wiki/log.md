@@ -2,6 +2,21 @@
 
 > 只能附加，最新的在最上面。標題格式：`## [YYYY-MM-DD] 動作 | 標題`，動作為 ingest／query／lint／schema／init。
 
+## [2026-11-16] slides | 審計是什麼？從風險到意見
+- 新增逐頁稿：`slides/what-is-audit.md`（28 頁、3 章、3 題小測驗），內容只取自研究筆記
+- lint 第 1 次：1 error、2 warning（簡體字「来源」、播放器尚未建立）；人工比對發現 1 句筆記沒有的評價，已刪改
+- 等待使用者確認後再產生 HTML 簡報
+
+## [2026-11-16] schema | 教學結構與流程紀錄（docs/）
+- AGENTS.md 6.6 新增第 6 點「教學結構」：先想一想 → 學習目標 → 章節 → 小測驗＋解答 → 總結；`templates/slides.md` 改成這個骨架
+- 新增 6.9「流程紀錄」與 `docs/`（workflow、runs、reflection）；網站上方導覽新增「專案說明」
+- lint：檢查教學結構；檢查 `docs/` 的連結與圖片；「尚未產生播放器」由 error 改為 warning（逐頁稿要先停下來給使用者確認）
+
+## [2026-11-16] note | 審計是什麼？從風險到意見
+- 新增研究筆記：`notes/2026-11-16-what-is-audit.md`，本文只引用 wiki 12 頁（[[overview]]、[[audit-risk-model]]、[[materiality]]、[[audit-opinion-types]] 等）
+- 網路搜尋建議文獻 4 筆，皆以 WebFetch 確認可開啟後登記為 R001–R004（`raw/_reading-list.md`）；AICPA AU-C 200 PDF 因連結無法驗證而未列入
+- 缺口：審計存在的目的、查核人員一般責任、查核證據與財報聲明、實際案例
+
 ## [2026-11-16] schema | 封面副標題客製化
 - AGENTS.md 6.6：封面副標題要依主題寫出「讀者會搞懂什麼」，不可用通用句、不可與其他簡報重複；`templates/slides.md` 同步更新
 - `tools/lint.py`（使用者同意）：逐頁稿必須有 `subtitle`；通用句或模板文字、與其他簡報重複 → error；封面副標題與 `subtitle` 不一致 → warning

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" font-family="PingFang TC,Noto Sans TC,Microsoft JhengHei,sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1F3A5F"/></marker>
+<marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0L10,5L0,10z" fill="#C8892B"/></marker></defs>
+<rect width="1200" height="660" fill="#F7F5EF"/>
+<text x="40" y="44" font-size="24" font-weight="700" fill="#1F3A5F">LLM Wiki → 教學簡報：工作流程（graph＋loop）</text>
+<rect x="40" y="110" width="210" height="84" rx="14" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+<circle cx="62" cy="132" r="14" fill="#1F3A5F"/><text x="62" y="137" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">1</text>
+<text x="155.0" y="148" font-size="20" font-weight="700" fill="#1D2433" text-anchor="middle">使用者提供資料</text>
+<text x="155.0" y="174" font-size="14" fill="#55607A" text-anchor="middle">raw/（唯讀）</text>
+<rect x="330" y="110" width="210" height="84" rx="14" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+<circle cx="352" cy="132" r="14" fill="#1F3A5F"/><text x="352" y="137" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">2</text>
+<text x="445.0" y="148" font-size="20" font-weight="700" fill="#1D2433" text-anchor="middle">Ingest</text>
+<text x="445.0" y="174" font-size="14" fill="#55607A" text-anchor="middle">raw → wiki</text>
+<rect x="620" y="110" width="210" height="84" rx="14" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+<circle cx="642" cy="132" r="14" fill="#1F3A5F"/><text x="642" y="137" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">3</text>
+<text x="735.0" y="148" font-size="20" font-weight="700" fill="#1D2433" text-anchor="middle">先討論</text>
+<text x="735.0" y="174" font-size="14" fill="#55607A" text-anchor="middle">主題、讀者、範圍</text>
+<rect x="910" y="110" width="210" height="84" rx="14" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+<circle cx="932" cy="132" r="14" fill="#1F3A5F"/><text x="932" y="137" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">4</text>
+<text x="1025.0" y="148" font-size="20" font-weight="700" fill="#1D2433" text-anchor="middle">研究筆記</text>
+<text x="1025.0" y="174" font-size="14" fill="#55607A" text-anchor="middle">只用 wiki 內容</text>
+<rect x="330" y="204" width="210" height="30" rx="15" fill="#FBF1DF" stroke="#C8892B" stroke-width="1.5"/>
+<text x="435.0" y="224" font-size="13" fill="#7A5214" text-anchor="middle">檢查 A：可疑說法只進待查證＋lint</text>
+<rect x="910" y="204" width="210" height="30" rx="15" fill="#FBF1DF" stroke="#C8892B" stroke-width="1.5"/>
+<text x="1015.0" y="224" font-size="13" fill="#7A5214" text-anchor="middle">檢查 B：每段標 [[slug]]＋lint</text>
+<path d="M250,152 L326,152" fill="none" stroke="#1F3A5F" stroke-width="2.5" marker-end="url(#a)"/>
+<path d="M540,152 L616,152" fill="none" stroke="#1F3A5F" stroke-width="2.5" marker-end="url(#a)"/>
+<path d="M830,152 L906,152" fill="none" stroke="#1F3A5F" stroke-width="2.5" marker-end="url(#a)"/>
+<rect x="910" y="380" width="210" height="84" rx="14" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+<circle cx="932" cy="402" r="14" fill="#1F3A5F"/><text x="932" y="407" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">5</text>
+<text x="1025.0" y="418" font-size="20" font-weight="700" fill="#1D2433" text-anchor="middle">逐頁稿</text>
+<text x="1025.0" y="444" font-size="14" fill="#55607A" text-anchor="middle">只用筆記內容</text>
+<rect x="620" y="380" width="210" height="84" rx="14" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+<circle cx="642" cy="402" r="14" fill="#1F3A5F"/><text x="642" y="407" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">6</text>
+<text x="735.0" y="418" font-size="20" font-weight="700" fill="#1D2433" text-anchor="middle">使用者確認</text>
+<text x="735.0" y="444" font-size="14" fill="#55607A" text-anchor="middle">停下來等回覆</text>
+<rect x="330" y="380" width="210" height="84" rx="14" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+<circle cx="352" cy="402" r="14" fill="#1F3A5F"/><text x="352" y="407" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">7</text>
+<text x="445.0" y="418" font-size="20" font-weight="700" fill="#1D2433" text-anchor="middle">HTML 簡報</text>
+<text x="445.0" y="444" font-size="14" fill="#55607A" text-anchor="middle">複製播放器</text>
+<rect x="40" y="380" width="210" height="84" rx="14" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+<circle cx="62" cy="402" r="14" fill="#1F3A5F"/><text x="62" y="407" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">8</text>
+<text x="155.0" y="418" font-size="20" font-weight="700" fill="#1D2433" text-anchor="middle">紀錄與反思</text>
+<text x="155.0" y="444" font-size="14" fill="#55607A" text-anchor="middle">docs/runs、reflection</text>
+<rect x="910" y="474" width="210" height="30" rx="15" fill="#FBF1DF" stroke="#C8892B" stroke-width="1.5"/>
+<text x="1015.0" y="494" font-size="13" fill="#7A5214" text-anchor="middle">檢查 C：lint 教學結構＋字數＋比對</text>
+<rect x="330" y="474" width="210" height="30" rx="15" fill="#FBF1DF" stroke="#C8892B" stroke-width="1.5"/>
+<text x="435.0" y="494" font-size="13" fill="#7A5214" text-anchor="middle">檢查 D：逐頁截圖（溢出、重疊）</text>
+<path d="M1015,236 L1015,376" fill="none" stroke="#1F3A5F" stroke-width="2.5" marker-end="url(#a)"/>
+<path d="M910,422 L834,422" fill="none" stroke="#1F3A5F" stroke-width="2.5" marker-end="url(#a)"/>
+<path d="M620,422 L544,422" fill="none" stroke="#1F3A5F" stroke-width="2.5" marker-end="url(#a)"/>
+<path d="M330,422 L254,422" fill="none" stroke="#1F3A5F" stroke-width="2.5" marker-end="url(#a)"/>
+<path d="M1015,108 C1015,70 435,70 435,106" fill="none" stroke="#C8892B" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#b)"/>
+<text x="725" y="66" font-size="14" fill="#7A5214" text-anchor="middle">缺口 → 建議文獻 → 使用者下載 → 再 ingest</text>
+<path d="M725,466 C725,560 1015,560 1015,508" fill="none" stroke="#C8892B" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#b)"/>
+<text x="712" y="506" font-size="14" fill="#7A5214" text-anchor="end">要修改 → 回到逐頁稿</text>
+<path d="M435,506 C435,640 1060,640 1060,508" fill="none" stroke="#C8892B" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#b)"/>
+<text x="740" y="628" font-size="14" fill="#7A5214" text-anchor="middle">文字溢出、錯字 → 改逐頁稿（不改播放器）</text>
+<rect x="40" y="262" width="210" height="64" rx="14" fill="#1F3A5F"/>
+<text x="145" y="290" font-size="17" fill="#fff" text-anchor="middle">規則 AGENTS.md</text>
+<text x="145" y="314" font-size="14" fill="#fff" text-anchor="middle">＋ tools/lint.py</text>
+<path d="M145,378 L145,330" fill="none" stroke="#C8892B" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#b)"/>
+<text x="158" y="358" font-size="14" fill="#7A5214" text-anchor="start">反覆出錯 → 檢查前移</text>
+<path d="M252,294 L560,294" fill="none" stroke="#1F3A5F" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#a)"/>
+<text x="410" y="286" font-size="14" fill="#1F3A5F" text-anchor="middle">約束每一個節點</text>
+</svg>
