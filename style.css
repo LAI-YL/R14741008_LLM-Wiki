@@ -261,3 +261,39 @@ a.stat:hover { text-decoration: none; border-color: var(--primary); }
 }
 .md.reading td:nth-child(4) a::before { content: "⬇ "; }
 .md.reading td:nth-child(1), .md.reading td:nth-child(5), .md.reading td:nth-child(8) { white-space: nowrap; }
+
+/* ---------- 前台／後台分離（2026-11-16） ---------- */
+@media (min-width: 861px) {
+  .layout.solo { grid-template-columns: minmax(0, 1fr); max-width: 1080px; }
+  .layout.solo .sidebar { display: none; }
+}
+.back { display: inline-block; font-size: 14px; margin-bottom: 10px; }
+/* 講義庫 */
+.hero-lessons { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 30px; padding-bottom: 30px; background: #13233A; }
+.hero-lessons h1 { font-size: 34px; }
+.hero-lessons img { width: 150px; flex: none; }
+.lib-title { font-family: var(--serif); color: var(--primary); margin: 8px 0 14px; }
+.lessons { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+.lesson { border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; background: var(--bg); border-top: 6px solid var(--primary); }
+.lesson-tag { font-size: 12px; color: var(--ink-soft); letter-spacing: .03em; }
+.lesson h2 { font-family: var(--serif); font-size: 21px; margin: 6px 0 4px; color: var(--ink); border: 0; padding: 0; }
+.lesson-sub { color: #9A6213; font-weight: 600; margin: 0 0 8px; }
+.lesson-sum { font-size: 14px; color: var(--ink-soft); margin: 0 0 16px; }
+.lesson-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { display: inline-block; padding: 7px 16px; border-radius: 999px; border: 1.5px solid var(--primary); color: var(--primary); font-size: 14px; font-weight: 600; }
+.btn:hover { text-decoration: none; background: var(--primary-soft); }
+.btn.primary { background: var(--primary); color: #fff; }
+.btn.primary:hover { background: #2B4C78; }
+.btn.ghost { border-color: var(--line); color: var(--ink-soft); font-weight: 500; }
+.more { margin-top: 22px; font-size: 14px; }
+/* 維護者專區 */
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 6px 0 24px; }
+.admin-tile { display: block; border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; background: var(--bg); color: inherit; }
+.admin-tile:hover { text-decoration: none; border-color: var(--primary); }
+.admin-tile b { display: block; color: var(--primary); font-size: 16px; }
+.admin-tile span { font-size: 13px; color: var(--ink-soft); }
+.admin-link { font-size: 12px; color: var(--ink-soft); }
+details.maint { margin: 24px 0; border: 1px dashed var(--line); border-radius: var(--radius); padding: 10px 14px; background: var(--bg); }
+details.maint summary { cursor: pointer; color: var(--ink-soft); font-size: 14px; }
+.mobile-nav a.active { border-color: var(--primary); color: var(--primary); }
+@media (max-width: 860px) { .hero-lessons img { width: 90px; } .hero-lessons h1 { font-size: 26px; } }

@@ -4,6 +4,8 @@
  *   notes/index.md   → 研究筆記清單
  *   slides/index.md  → 簡報清單（播放器在 decks/<slug>/）
  *   raw/_reading-list.md → 建議文獻清單
+ * 前台（給學習者）：講義庫 #/、知識庫 #/wiki、#/p/…、筆記 #/n/…、逐頁稿 #/s/…
+ * 後台（給維護者）：維護者專區 #/admin → 日誌、建議文獻、專案說明、素材庫
  * Markdown 與 LaTeX 渲染在 md.js。
  */
 (() => {
@@ -52,12 +54,12 @@
     return (href) => {
       if (href.startsWith("#")) return href;
       const p = joinPath(baseDir, href);
-      if (/^wiki\/index\.md$/.test(p)) return "#/";
+      if (/^wiki\/index\.md$/.test(p)) return "#/wiki";
       if (/^wiki\/log\.md$/.test(p)) return "#/log";
       if (/^wiki\/.+\.md$/.test(p)) return `#/p/${stemOf(p)}`;
-      if (/^notes\/index\.md$/.test(p)) return "#/notes";
+      if (/^notes\/index\.md$/.test(p)) return "#/";
       if (/^notes\/.+\.md$/.test(p)) return `#/n/${stemOf(p)}`;
-      if (/^slides\/index\.md$/.test(p)) return "#/decks";
+      if (/^slides\/index\.md$/.test(p)) return "#/";
       if (/^slides\/.+\.md$/.test(p)) return `#/s/${stemOf(p)}`;
       if (/^raw\/_reading-list\.md$/.test(p)) return "#/reading";
       if (/^docs\/.+\.md$/.test(p)) return `#/d/${p.slice(5).replace(/\.md$/, "")}`;
@@ -125,7 +127,22 @@
       }).join("")}</ul>`).join("");
   }
   function setNav(name) {
-    document.querySelectorAll(".top-links a").forEach((a) => a.classList.toggle("active", a.dataset.nav === name));
+    document.querySelectorAll(".top-links a, .mobile-nav a").forEach((a) => a.classList.toggle("active", a.dataset.nav === name));
+    // 只有知識庫頁面需要左側目錄；講義庫與維護者專區用單欄版面
+    $(".layout").classList.toggle("solo", name !== "wiki");
+  }
+  const backTo = (href, text) => `<a class="back" href="${href}">← ${text}</a>`;
+  // 來源頁的「待查證／疑點」是維護用資訊：網站上預設收合（Markdown 原檔不變）
+  function foldTodo(root) {
+    root.querySelectorAll("h2").forEach((h) => {
+      if (!h.textContent.includes("待查證")) return;
+      const d = document.createElement("details");
+      d.className = "maint";
+      d.innerHTML = `<summary>${esc(h.textContent)}（維護用資訊，點開查看）</summary>`;
+      let n = h.nextElementSibling;
+      while (n && n.tagName !== "H2") { const next = n.nextElementSibling; d.appendChild(n); n = next; }
+      h.replaceWith(d);
+    });
   }
   function metaBar(meta, extra = "") {
     const type = meta.type || "";
@@ -143,7 +160,7 @@
 
   // ---------- 各畫面 ----------
   async function showWikiPage(slug) {
-    renderToc(slug); setNav("");
+    renderToc(slug); setNav("wiki");
     const p = pages.get(slug);
     if (!p) { content.innerHTML = notFound("頁面"); return; }
     const { meta, body } = await loadDoc(p.path);
@@ -155,33 +172,20 @@
       ${back.length ? back.map((b) => chip(`#/p/${b.slug}`, esc(b.title))).join("") : '<span class="muted">目前沒有其他頁面連到這裡</span>'}
       ${nback.length ? `<h4 class="sub">引用這一頁的研究筆記（${nback.length}）</h4>${nback.map((n) => chip(`#/n/${n.stem}`, esc(n.title))).join("")}` : ""}
       </section>`);
+    foldTodo(content);
     document.title = `${meta.title || p.title}｜美國審計知識資料庫`;
   }
 
-  async function showNotes() {
-    renderToc(null); setNav("notes");
-    const list = [...notes.values()].sort((a, b) => b.stem.localeCompare(a.stem));
-    content.innerHTML = `<div class="page-meta"><span class="badge type-note">研究筆記</span></div>
-      <article class="md"><h1>研究筆記 Notes</h1>
-      <p>針對一個問題或研究主題，<strong>只根據知識庫（wiki）已有的內容</strong>整理而成。網路上找到、但還沒放進 wiki 的資料，只會列在每篇最後的「建議參考文獻」，並登記到 <a href="#/reading">建議文獻清單</a>。</p></article>
-      ${list.length ? `<div class="cards">${list.map((n) => {
-        const d = deckSlugOfNote(n.stem);
-        return `<div class="card"><a class="card-title" href="#/n/${n.stem}">${esc(n.title)}</a>
-          <p>${esc(n.summary)}</p><div class="card-meta">${esc(n.stem.slice(0, 10))}
-          ${decks.has(d) ? chip(`decks/${d}/`, "▶ 播放簡報", true) : ""}</div></div>`;
-      }).join("")}</div>` : '<p class="empty">目前還沒有研究筆記。對 AI 說「研究：（你的問題）」就會產生第一篇。</p>'}`;
-    document.title = "研究筆記｜美國審計知識資料庫";
-  }
 
   async function showNote(stem) {
-    renderToc(null); setNav("notes");
+    renderToc(null); setNav("lessons");
     const n = notes.get(stem);
     if (!n) { content.innerHTML = notFound("研究筆記"); return; }
     const { meta, body } = await loadDoc(n.path);
     const d = deckSlugOfNote(stem);
     const actions = decks.has(d) ? `<div class="actions">${chip(`decks/${d}/`, "▶ 播放簡報", true)}${chip(`#/s/${d}`, "逐頁稿")}</div>` : "";
     const used = Array.isArray(meta.wiki_pages) ? meta.wiki_pages.length : 0;
-    renderInto(content, `${metaBar(meta, `<span class="tag-plain">依據 ${used} 個 wiki 頁面</span>`)}${actions}
+    renderInto(content, `${backTo("#/", "講義庫")}${metaBar(meta, `<span class="tag-plain">依據 ${used} 個 wiki 頁面</span>`)}${actions}
       <article class="md">${MD.render(body, ctxFor("notes/"))}</article>`);
     document.title = `${meta.title || n.title}｜研究筆記`;
   }
@@ -193,33 +197,15 @@
     return slides;
   }
 
-  async function showDecks() {
-    renderToc(null); setNav("decks");
-    if (!allLoaded) await loadAll();
-    const list = [...decks.values()];
-    content.innerHTML = `<div class="page-meta"><span class="badge type-slides">簡報</span></div>
-      <article class="md"><h1>簡報 Slides</h1>
-      <p>每份簡報都由一篇研究筆記產生：先寫逐頁稿（<code>slides/</code>），再由共用的簡報引擎播放（<code>decks/</code>）。簡報可用的圖示與圖解見 <a href="#/assets">素材庫</a>。</p></article>
-      ${list.length ? `<div class="cards">${list.map((s) => {
-        const doc = cache.get(s.path);
-        const note = doc && doc.meta.note;
-        const count = doc ? splitSlides(doc.body).length : 0;
-        return `<div class="card"><a class="card-title" href="decks/${s.slug}/" target="_blank" rel="noopener">${esc(s.title)}</a>
-          <p>${esc(s.summary)}</p><div class="card-meta">${count} 頁
-          ${chip(`decks/${s.slug}/`, "▶ 播放", true)}${chip(`#/s/${s.slug}`, "逐頁稿")}
-          ${note && notes.has(note) ? chip(`#/n/${note}`, "研究筆記") : ""}</div></div>`;
-      }).join("")}</div>` : '<p class="empty">目前還沒有簡報。對 AI 說「做簡報：（研究筆記名稱）」就會產生逐頁稿。</p>'}`;
-    document.title = "簡報｜美國審計知識資料庫";
-  }
 
   async function showSlides(slug) {
-    renderToc(null); setNav("decks");
+    renderToc(null); setNav("lessons");
     const s = decks.get(slug);
     if (!s) { content.innerHTML = notFound("簡報"); return; }
     const { meta, body } = await loadDoc(s.path);
     const slides = splitSlides(body);
     const ctx = ctxFor("slides/");
-    renderInto(content, `${metaBar(meta)}
+    renderInto(content, `${backTo("#/", "講義庫")}${metaBar(meta)}
       <div class="actions">${chip(`decks/${slug}/`, "▶ 播放簡報", true)}${meta.note && notes.has(meta.note) ? chip(`#/n/${meta.note}`, "研究筆記") : ""}</div>
       <article class="md"><h1>${esc(meta.title || s.title)}｜逐頁稿</h1>
       ${slides.map((sl, i) => `<section class="slide-card"><div class="slide-card-head">第 ${i + 1} 頁 <span class="badge">${esc(sl.type)}</span></div>${MD.render(sl.md, ctx)}</section>`).join("")}
@@ -228,63 +214,117 @@
   }
 
   async function showReading() {
-    renderToc(null); setNav("reading");
+    renderToc(null); setNav("admin");
     const text = await fetchText("raw/_reading-list.md").catch(() => "# 建議文獻清單\n\n目前沒有資料。");
-    renderInto(content, `<div class="page-meta"><span class="badge type-source">文獻清單</span></div>
+    renderInto(content, `${backTo("#/admin", "維護者專區")}<div class="page-meta"><span class="badge type-source">文獻清單</span></div>
       <article class="md reading">${MD.render(MD.parseFrontmatter(text).body, ctxFor("raw/"))}</article>`);
     document.title = "建議文獻清單｜美國審計知識資料庫";
   }
 
   async function showAssets() {
-    renderToc(null); setNav("decks");
+    renderToc(null); setNav("admin");
     const text = await fetchText("assets/index.md");
-    renderInto(content, `<div class="page-meta"><span class="badge type-slides">素材庫</span></div>
+    renderInto(content, `${backTo("#/admin", "維護者專區")}<div class="page-meta"><span class="badge type-slides">素材庫</span></div>
       <article class="md">${MD.render(text, ctxFor("assets/"))}</article>`);
     document.title = "素材庫｜美國審計知識資料庫";
   }
 
   // 專案說明（docs/）：工作流程、執行紀錄、反思；與審計知識分開
   async function showDoc(path) {
-    renderToc(null); setNav("docs");
+    renderToc(null); setNav("admin");
     if (!/^[\w\/-]+$/.test(path)) { content.innerHTML = notFound("專案說明"); return; }
     let text;
     try { text = await fetchText(`docs/${path}.md`); } catch (e) { content.innerHTML = notFound("專案說明"); return; }
     const { meta, body } = MD.parseFrontmatter(text);
     const dir = "docs/" + (path.includes("/") ? path.slice(0, path.lastIndexOf("/") + 1) : "");
-    renderInto(content, `<div class="page-meta"><span class="badge">專案說明</span>${path !== "index" ? ' <a href="#/d/index">← 專案說明首頁</a>' : ""}</div><article class="md">${MD.render(body, ctxFor(dir))}</article>`);
+    renderInto(content, `${path !== "index" ? backTo("#/d/index", "專案說明") : backTo("#/admin", "維護者專區")}<div class="page-meta"><span class="badge">專案說明</span></div><article class="md">${MD.render(body, ctxFor(dir))}</article>`);
     document.title = `${(meta && meta.title) || "專案說明"}｜美國審計知識資料庫`;
   }
   async function showLog() {
-    renderToc(null); setNav("log");
+    renderToc(null); setNav("admin");
     const text = await fetchText("wiki/log.md");
-    renderInto(content, `<div class="page-meta"><span class="badge">日誌</span></div><article class="md">${MD.render(text, ctxFor("wiki/"))}</article>`);
+    renderInto(content, `${backTo("#/admin", "維護者專區")}<div class="page-meta"><span class="badge">日誌</span></div><article class="md">${MD.render(text, ctxFor("wiki/"))}</article>`);
     document.title = "日誌｜美國審計知識資料庫";
   }
 
-  async function showHome() {
-    renderToc("overview"); setNav("home");
+  // ---------- 前台：講義庫（首頁） ----------
+  async function showLessons() {
+    renderToc(null); setNav("lessons");
+    if (!allLoaded) await loadAll();
+    const list = [...notes.values()].sort((a, b) => b.stem.localeCompare(a.stem));
+    const card = (n) => {
+      const d = deckSlugOfNote(n.stem);
+      const sd = decks.has(d) ? cache.get(decks.get(d).path) : null;
+      const count = sd ? splitSlides(sd.body).length : 0;
+      const sub = sd && sd.meta.subtitle ? sd.meta.subtitle : n.summary;
+      return `<article class="lesson">
+        <div class="lesson-tag">${esc(n.stem.slice(0, 10))}${count ? `・簡報 ${count} 頁` : ""}</div>
+        <h2>${esc(n.title)}</h2>
+        <p class="lesson-sub">${esc(sub)}</p>
+        <p class="lesson-sum">${esc(n.summary)}</p>
+        <div class="lesson-actions">
+          ${decks.has(d) ? `<a class="btn primary" href="decks/${d}/" target="_blank" rel="noopener">▶ 播放簡報</a>` : ""}
+          <a class="btn" href="#/n/${n.stem}">閱讀筆記</a>
+          ${decks.has(d) ? `<a class="btn ghost" href="#/s/${d}">逐頁稿</a>` : ""}
+        </div></article>`;
+    };
+    renderInto(content, `
+      <div class="hero hero-lessons">
+        <div><h1>審計，從零開始看懂。</h1>
+        <p>每份講義都來自同一個知識庫：先播放簡報快速入門，再讀研究筆記看完整說明。</p></div>
+        <img src="assets/mascot/owl-wave-sticker.svg" alt="揮手的貓頭鷹審計師">
+      </div>
+      <h2 class="lib-title">講義庫</h2>
+      ${list.length ? `<div class="lessons">${list.map(card).join("")}</div>` : '<p class="empty">目前還沒有講義。對 AI 說「研究：（你的問題）」就會產生第一篇。</p>'}
+      <p class="more muted">更多講義，陸續加入中…　想查準則與概念，請到 <a href="#/wiki">知識庫</a>。</p>`);
+    document.title = "講義庫｜美國審計知識資料庫";
+  }
+
+  // ---------- 前台：知識庫總覽 ----------
+  async function showWikiHome() {
+    renderToc("overview"); setNav("wiki");
     const { body } = await loadDoc("wiki/overview.md");
     if (!allLoaded) await loadAll();
     const count = (name) => (sections.find((s) => s.name.includes(name)) || { slugs: [] }).slugs.length;
+    renderInto(content, `
+      <div class="hero">
+        <h1>美國審計知識庫</h1>
+        <p>由 AI 持續維護的 LLM Wiki：每加入一份資料，就整合進既有頁面、互相連結。左側目錄可瀏覽所有準則、概念與機構。</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>${count("準則")}</b><span>準則</span></div>
+        <div class="stat"><b>${count("概念")}</b><span>概念</span></div>
+        <div class="stat"><b>${count("機構")}</b><span>機構</span></div>
+        <div class="stat"><b>${count("綜合分析")}</b><span>綜合分析</span></div>
+        <a class="stat" href="#/"><b>${notes.size}</b><span>講義</span></a>
+      </div>
+      <article class="md">${MD.render(body.replace(/^#\s+.*\n/, ""), ctxFor("wiki/"))}</article>`);
+    document.title = "知識庫｜美國審計知識資料庫";
+  }
+
+  // ---------- 後台：維護者專區 ----------
+  async function showAdmin() {
+    renderToc(null); setNav("admin");
     const logText = await fetchText("wiki/log.md").catch(() => "");
     const recent = (logText.match(/^## \[.*$/gm) || []).slice(0, 5)
       .map((l) => `<li>${MD.inline(l.replace(/^##\s+/, ""), ctxFor("wiki/"))}</li>`).join("");
-    renderInto(content, `
-      <div class="hero">
-        <h1>美國審計知識資料庫</h1>
-        <p>一個由 AI 持續維護的 LLM Wiki：放入資料 → AI 摘要、歸檔、交叉連結 → 知識不斷累積 → 產生研究筆記與簡報。</p>
+    const reading = await fetchText("raw/_reading-list.md").catch(() => "");
+    const pending = (reading.match(/\|\s*待下載\s*\|/g) || []).length;
+    const srcs = (sections.find((s) => s.name.includes("資料來源")) || { slugs: [] }).slugs;
+    const tile = (href, title, desc) => `<a class="admin-tile" href="${href}"><b>${title}</b><span>${desc}</span></a>`;
+    renderInto(content, `<div class="page-meta"><span class="badge">維護者專區</span></div>
+      <article class="md"><h1>維護者專區</h1>
+      <p>給維護這個知識庫的人（使用者與 AI）看的後台資訊。學習者只需要使用上方的「講義庫」與「知識庫」。</p></article>
+      <div class="admin-grid">
+        ${tile("#/d/index", "專案說明", "工作流程圖、執行紀錄、反思")}
+        ${tile("#/reading", "建議文獻清單", `研究筆記列出的官方文獻；待下載 ${pending} 筆`)}
+        ${tile("#/log", "日誌", "所有 ingest、筆記、簡報、規則變更的紀錄")}
+        ${tile("#/assets", "素材庫", "簡報可用的圖示、圖解與吉祥物")}
       </div>
-      <div class="stats">
-        <div class="stat"><b>${pages.size}</b><span>wiki 頁面</span></div>
-        <div class="stat"><b>${count("準則")}</b><span>準則</span></div>
-        <div class="stat"><b>${count("概念")}</b><span>概念</span></div>
-        <div class="stat"><b>${count("資料來源")}</b><span>資料來源</span></div>
-        <a class="stat" href="#/notes"><b>${notes.size}</b><span>研究筆記</span></a>
-        <a class="stat" href="#/decks"><b>${decks.size}</b><span>簡報</span></a>
-      </div>
-      <article class="md">${MD.render(body.replace(/^#\s+.*\n/, ""), ctxFor("wiki/"))}</article>
-      <section class="recent md"><h2>最近更新</h2><ul>${recent}</ul><p><a href="#/log">查看完整日誌 →</a></p></section>`);
-    document.title = "美國審計知識資料庫｜US Audit LLM Wiki";
+      <section class="md"><h2>資料來源（${srcs.length}）</h2><p class="muted">每份原始資料的摘要與「待查證／疑點」。</p>
+      <ul>${srcs.map((sl) => `<li><a href="#/p/${sl}">${esc(pages.get(sl).title)}</a></li>`).join("")}</ul>
+      <h2>最近更新</h2><ul>${recent}</ul></section>`);
+    document.title = "維護者專區｜美國審計知識資料庫";
   }
 
   async function route() {
@@ -295,14 +335,14 @@
       if (hash.startsWith("#/p/")) return await showWikiPage(hash.slice(4));
       if (hash.startsWith("#/n/")) return await showNote(hash.slice(4));
       if (hash.startsWith("#/s/")) return await showSlides(hash.slice(4));
-      if (hash === "#/notes") return await showNotes();
-      if (hash === "#/decks") return await showDecks();
+      if (hash === "#/wiki") return await showWikiHome();
+      if (hash === "#/admin") return await showAdmin();
       if (hash === "#/reading") return await showReading();
       if (hash === "#/assets") return await showAssets();
       if (hash === "#/log") return await showLog();
       if (hash === "#/docs") return await showDoc("index");
       if (hash.startsWith("#/d/")) return await showDoc(hash.slice(4));
-      return await showHome();
+      return await showLessons();  // #/、舊網址 #/notes、#/decks 都導向講義庫
     } catch (e) {
       content.innerHTML = `<h1>載入失敗</h1><p class="muted">${esc(e.message)}</p>`;
     }
