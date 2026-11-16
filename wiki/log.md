@@ -2,6 +2,23 @@
 
 > 只能附加，最新的在最上面。標題格式：`## [YYYY-MM-DD] 動作 | 標題`，動作為 ingest／query／lint／schema／init。
 
+## [2026-11-16] deck | SSARS、SSAE、期後事項三份簡報
+- 新增播放器：`decks/ssars-services/`、`decks/ssae-services/`、`decks/subsequent-events-intro/`（模板原封不動複製）
+- `decks/_shared/deck.css`：圖解放在 `key` 頁時可滿版顯示（高度上限 470px），`templates/deck.html` 版本號更新並重新複製到所有播放器
+- 執行紀錄：`docs/runs/2026-11-16-ssars-services.md` 等三份
+
+## [2026-11-16] slides | SSARS、SSAE、期後事項三份逐頁稿
+- 新增：`slides/ssars-services.md`（24 頁）、`slides/ssae-services.md`（26 頁）、`slides/subsequent-events-intro.md`（24 頁），各含 3 題小測驗
+- 先在工作區產出預覽，使用者確認後才寫入
+
+## [2026-11-16] asset | 期後事項時間軸、SOC 報告類型圖解
+- 新增：`assets/diagrams/subsequent-events-timeline.svg`（依據 [[subsequent-events]]）、`assets/diagrams/soc-report-types.svg`（依據 [[at-c-320]]）
+
+## [2026-11-16] note | SSARS、SSAE、期後事項三篇研究筆記
+- 新增：`notes/2026-11-16-ssars-services.md`、`notes/2026-11-16-ssae-services.md`、`notes/2026-11-16-subsequent-events-intro.md`，本文只引用 wiki
+- 建議文獻 R005–R010（皆以 WebFetch 確認可開啟）
+- 發現 [[subsequent-events]]、[[pcaob-vs-aicpa-standards]] 記載的 PCAOB 準則編號 AS 2901 與 PCAOB 官網不一致；筆記與簡報不使用該編號，待使用者決定如何修正 wiki
+
 ## [2026-11-16] schema | 知識庫側邊欄：分類順序、可折疊、子頁排序
 - 側邊欄分類改為「總覽 → 機構 → 概念 → 準則 → 綜合分析」，每個分類可點開／收合（目前所在的分類自動展開）
 - 子頁依標題逐字排序：數字依數值遞增 → 英文 A～Z → 中文依筆畫數遞增

@@ -204,7 +204,8 @@ a { color: var(--primary); text-decoration: none; border-bottom: 1px dashed curr
 .slide-cover h1 { text-wrap: balance; max-width: 760px; font-size: 64px; }
 /* 圖解（diagrams）比圖示寬，給較大的空間 */
 .figure-wrap:has(img[src*="/diagrams/"]) .fig-img { flex-basis: 56%; }
-.slide-key img { max-width: 100%; }
+.slide-key img { max-width: 100%; max-height: 470px; }
+.slide-key:has(img) h2 { margin-bottom: 6px; }
 
 /* 列印／存 PDF：每頁一張投影片 */
 @page { size: 1280px 720px; margin: 0; }

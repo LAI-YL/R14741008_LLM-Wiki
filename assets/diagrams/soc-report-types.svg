@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 540" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',system-ui,sans-serif">
+  <title>SOC 報告類型</title>
+  <text x="150" y="80" font-size="1" fill="#1D2433" font-weight="400" text-anchor="middle"></text>
+  <rect x="260" y="40" width="370" height="90" rx="14" fill="#1F3A5F" stroke="#1F3A5F" stroke-width="2.5"/>
+  <text x="445" y="80" font-size="32" fill="#FFFFFF" font-weight="700" text-anchor="middle">SOC 1</text>
+  <text x="445" y="112" font-size="20" fill="#FFFFFF" font-weight="400" text-anchor="middle">財務報導相關的內部控制</text>
+  <rect x="650" y="40" width="370" height="90" rx="14" fill="#1F3A5F" stroke="#1F3A5F" stroke-width="2.5"/>
+  <text x="835" y="80" font-size="32" fill="#FFFFFF" font-weight="700" text-anchor="middle">SOC 2</text>
+  <text x="835" y="112" font-size="20" fill="#FFFFFF" font-weight="400" text-anchor="middle">信任服務準則（安全性等）</text>
+  <rect x="40" y="150" width="200" height="170" rx="14" fill="#E6ECF4" stroke="#1F3A5F" stroke-width="2.5"/>
+  <text x="140" y="222" font-size="30" fill="#1F3A5F" font-weight="700" text-anchor="middle">Type 1</text>
+  <text x="140" y="258" font-size="20" fill="#5A6275" font-weight="400" text-anchor="middle">單一時點</text>
+  <rect x="40" y="340" width="200" height="170" rx="14" fill="#FBF1E0" stroke="#C8892B" stroke-width="2.5"/>
+  <text x="140" y="412" font-size="30" fill="#8A5A12" font-weight="700" text-anchor="middle">Type 2</text>
+  <text x="140" y="448" font-size="20" fill="#5A6275" font-weight="400" text-anchor="middle">一段期間</text>
+  <rect x="260" y="150" width="370" height="170" rx="14" fill="#FFFFFF" stroke="#D9D4C7" stroke-width="2"/>
+  <text x="445" y="228" font-size="24" fill="#1D2433" font-weight="400" text-anchor="middle">只評估控制「設計」</text>
+  <text x="445" y="264" font-size="20" fill="#5A6275" font-weight="400" text-anchor="middle">不能用來降低 CR</text>
+  <rect x="260" y="340" width="370" height="170" rx="14" fill="#FFFFFF" stroke="#C8892B" stroke-width="2.5"/>
+  <text x="445" y="418" font-size="24" fill="#1D2433" font-weight="700" text-anchor="middle">設計＋作業有效性</text>
+  <text x="445" y="454" font-size="20" fill="#8A5A12" font-weight="700" text-anchor="middle">主查會計師可用來降低 CR</text>
+  <rect x="650" y="150" width="370" height="170" rx="14" fill="#FFFFFF" stroke="#D9D4C7" stroke-width="2"/>
+  <text x="835" y="244" font-size="24" fill="#1D2433" font-weight="400" text-anchor="middle">只評估控制「設計」</text>
+  <rect x="650" y="340" width="370" height="170" rx="14" fill="#FFFFFF" stroke="#C8892B" stroke-width="2.5"/>
+  <text x="835" y="434" font-size="24" fill="#1D2433" font-weight="700" text-anchor="middle">設計＋作業有效性</text>
+
+</svg>

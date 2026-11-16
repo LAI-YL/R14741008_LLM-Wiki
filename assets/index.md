@@ -28,6 +28,8 @@
 | `assets/diagrams/fraud-triangle.svg` | ![舞弊三角|160](assets/diagrams/fraud-triangle.svg) | 舞弊三角 | [[fraud-risk]] | 自繪 |
 | `assets/diagrams/opinion-matrix.svg` | ![意見矩陣|200](assets/diagrams/opinion-matrix.svg) | 查核意見類型矩陣 | [[audit-opinion-types]] | 自繪 |
 | `assets/diagrams/assurance-levels.svg` | ![確信程度|200](assets/diagrams/assurance-levels.svg) | 各服務的確信程度 | [[engagement-types-comparison]] | 自繪 |
+| `assets/diagrams/subsequent-events-timeline.svg` | ![期後事項時間軸|200](assets/diagrams/subsequent-events-timeline.svg) | 期後事項時間軸與 Type 1／Type 2 | [[subsequent-events]] | 自繪 |
+| `assets/diagrams/soc-report-types.svg` | ![SOC 報告類型|200](assets/diagrams/soc-report-types.svg) | SOC 1／SOC 2 × Type 1／Type 2 | [[at-c-320]] | 自繪 |
 
 ## 機構標誌 Logos（由使用者提供）
 

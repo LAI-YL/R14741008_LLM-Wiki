@@ -10,6 +10,9 @@ title: 專案說明
 |---|---|
 | [工作流程](workflow.md) | 流程圖（graph＋loop）、每個節點的輸入／產出／檢查 |
 | [執行紀錄：審計是什麼？](runs/2026-11-16-what-is-audit.md) | 一次完整執行「筆記 → 逐頁稿 → 簡報」的檢查紀錄 |
+| [執行紀錄：SSARS 三種服務](runs/2026-11-16-ssars-services.md) | 同一批製作的三份簡報之一 |
+| [執行紀錄：SSAE 確信服務](runs/2026-11-16-ssae-services.md) | 同一批製作的三份簡報之一 |
+| [執行紀錄：期後事項](runs/2026-11-16-subsequent-events-intro.md) | 同一批製作的三份簡報之一 |
 | [反思](reflection.md) | 最常出錯的節點、檢查往前移到哪裡、workflow 怎麼改 |
 
 規則本身寫在專案根目錄的 `AGENTS.md`（第 6.9 節說明這些紀錄怎麼寫）。
