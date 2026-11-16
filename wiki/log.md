@@ -2,6 +2,11 @@
 
 > 只能附加，最新的在最上面。標題格式：`## [YYYY-MM-DD] 動作 | 標題`，動作為 ingest／query／lint／schema／init。
 
+## [2026-11-16] lint | AS 2901 改列待查證
+- [[subsequent-events]]、[[pcaob-vs-aicpa-standards]]：PCAOB 對應準則由「AS 2901」改為「尚未確認」
+- [[src-rag-audit-cards]] 的「待查證／疑點」新增 auc-560 一項：記錄卡片原始說法、與 PCAOB 官網不符之處，以及影響的頁面；待下載 R009、R010 後 ingest 確認
+- 研究筆記 `notes/2026-11-16-subsequent-events-intro.md` 的缺口說明同步更新
+
 ## [2026-11-16] deck | SSARS、SSAE、期後事項三份簡報
 - 新增播放器：`decks/ssars-services/`、`decks/ssae-services/`、`decks/subsequent-events-intro/`（模板原封不動複製）
 - `decks/_shared/deck.css`：圖解放在 `key` 頁時可滿版顯示（高度上限 470px），`templates/deck.html` 版本號更新並重新複製到所有播放器

@@ -32,7 +32,7 @@ updated: 2026-11-16
 | 舞弊 | AS 2401 | AU-C 240（[[fraud-risk]]） |
 | 存貨 | AS 2510 | AU-C 501（[[inventory-and-litigation]]） |
 | 函證 | AS 2310 | AU-C 505（[[external-confirmations]]） |
-| 期後事項 | AS 2901 | AU-C 560（[[subsequent-events]]） |
+| 期後事項 | 尚未確認（待查證） | AU-C 560（[[subsequent-events]]） |
 | 繼續經營 | AS 2415 | AU-C 570（[[going-concern]]） |
 | 標準報告 | [[as-3101]] | [[au-c-700]] |
 | 修正式意見 | AS 3105 | AU-C 705 |

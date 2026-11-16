@@ -58,6 +58,7 @@ updated: 2026-11-16
 > 這些說法和一般理解可能不同，依規則暫不採用，需以準則原文確認後再決定是否寫入：
 > - **auc-570**：卡片說繼續經營重大疑慮以「強調事項段」表達。疑點：較新的 AICPA 報告格式可能改為獨立的 “Substantial Doubt…” 段落。→ 影響 [[going-concern]]、[[emphasis-of-matter]]
 > - **pcaob-3101**：卡片說出具否定意見或無法表示意見時「不得」揭露 CAM。疑點：一般理解是無法表示意見時不需揭露，否定意見的情況不確定。官方摘要（[[src-pcaob-official-standards-web]]）只確認了「保留意見要含 CAM」，否定意見與無法表示意見仍待原文確認。→ 影響 [[critical-audit-matters]]
+> - **auc-560**：卡片寫上市公司對應準則為 PCAOB AS 2901。疑點：製作研究筆記時查詢 PCAOB 官網，期後事項的準則是 AS 2801、期後始獲知之事實是 AS 2905，AS 2901 則是「報告日後才考慮被遺漏的程序」，與卡片不符。待下載建議文獻 R009、R010 後 ingest 確認。→ 影響 [[subsequent-events]]、[[pcaob-vs-aicpa-standards]]
 > - **ssae-215**：卡片說 AUP 報告「必須限制使用」。疑點：較新的 SSAE 修訂可能已不再強制限制使用。→ 影響 [[at-c-215]]
 >
 > 已解決：
