@@ -1,6 +1,7 @@
 ---
 title: 原始資料中文標題
 type: source
+files: 1               # 這份來源包含的原始檔數；批次匯入時填整批的檔案數
 tags: [資料來源]
 sources: []
 updated: YYYY-MM-DD

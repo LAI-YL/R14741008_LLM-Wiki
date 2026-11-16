@@ -2,6 +2,12 @@
 
 > 只能附加，最新的在最上面。標題格式：`## [YYYY-MM-DD] 動作 | 標題`，動作為 ingest／query／lint／schema／init。
 
+## [2026-11-16] schema | README 連結、資料來源檔數、過時說明修正
+- README 加上網站、教學簡報、AGENTS.md、docs/ 連結與前台／後台說明
+- source 頁 frontmatter 新增 `files`（原始檔數；資料卡批次為 24，其餘為 1），維護者專區的資料來源標題改為顯示總檔數（27）並逐項列出；「美國審計準則重點資料卡（24 張）」標題去掉括號；`templates/source.md` 同步
+- AGENTS.md：批次匯入規則加上 `files` 欄位；第 10 節素材庫位置改為維護者專區；`slides/index.md` 開頭說明改為講義庫
+- `app.js` 修改，`index.html` 版本號更新為 `20261116d`
+
 ## [2026-11-16] schema | 沙賓法案從「機構」改列「準則」
 - 使用者指出 SOX 是法律、不是機構：`wiki/entities/sarbanes-oxley-act.md` 移到 `wiki/standards/sarbanes-oxley-act.md`，改用準則模板（基本資訊、適用對象、核心要求、與 AS 2201 的差異、考點），內容仍只取自既有資料
 - `wiki/index.md`：從「機構」移除，加在「準則」最後一行

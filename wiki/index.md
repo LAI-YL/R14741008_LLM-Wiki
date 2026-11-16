@@ -47,6 +47,6 @@
 
 ## 資料來源 Sources
 - [美國審計架構入門筆記](sources/src-us-audit-primer.md) — 起始資料：準則體系、風險、重大性、意見、CAM
-- [美國審計準則重點資料卡（24 張）](sources/src-rag-audit-cards.md) — AU-C、PCAOB、獨立性、GAGAS、單一審計、SSAE、SSARS 資料卡
+- [美國審計準則重點資料卡](sources/src-rag-audit-cards.md) — AU-C、PCAOB、獨立性、GAGAS、單一審計、SSAE、SSARS 資料卡
 - [PCAOB 官方準則重點摘要](sources/src-pcaob-official-standards-web.md) — AS 1101、2105、2810、2401、3105 官方重點
 - [審計準則與法規官方資料摘要](sources/src-official-sources-web-2.md) — 繼續經營、內控、函證、單一審計門檻、SEC 獨立性、收入認列推定

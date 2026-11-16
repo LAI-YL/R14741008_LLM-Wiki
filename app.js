@@ -349,6 +349,10 @@
     const reading = await fetchText("raw/_reading-list.md").catch(() => "");
     const pending = (reading.match(/\|\s*待下載\s*\|/g) || []).length;
     const srcs = (sections.find((s) => s.name.includes("資料來源")) || { slugs: [] }).slugs;
+    if (!allLoaded) await loadAll();
+    // 每份來源的原始檔數取自 frontmatter 的 files（批次匯入時為整批檔案數，預設 1）
+    const nFiles = (sl) => { const d = cache.get(pages.get(sl).path); const n = d && parseInt(d.meta.files, 10); return n > 0 ? n : 1; };
+    const totalFiles = srcs.reduce((a, sl) => a + nFiles(sl), 0);
     const tile = (href, title, desc) => `<a class="admin-tile" href="${href}"><b>${title}</b><span>${desc}</span></a>`;
     renderInto(content, `<div class="page-meta"><span class="badge">維護者專區</span></div>
       <article class="md"><h1>維護者專區</h1>
@@ -360,8 +364,8 @@
         ${tile("#/log", "日誌", "所有 ingest、筆記、簡報、規則變更的紀錄")}
         ${tile("#/assets", "素材庫", "簡報可用的圖示、圖解與吉祥物")}
       </div>
-      <section class="md"><h2>資料來源（${srcs.length}）</h2><p class="muted">每份原始資料的摘要與「待查證／疑點」。</p>
-      <ul>${srcs.map((sl) => `<li><a href="#/p/${sl}">${esc(pages.get(sl).title)}</a></li>`).join("")}</ul>
+      <section class="md"><h2>資料來源（${totalFiles}）</h2><p class="muted">每份原始資料的摘要與「待查證／疑點」。</p>
+      <ul>${srcs.map((sl) => `<li><a href="#/p/${sl}">${esc(pages.get(sl).title)}</a>（${nFiles(sl)}）</li>`).join("")}</ul>
       <h2>最近更新</h2><ul>${recent}</ul></section>`);
     $("#lockBtn").addEventListener("click", (e) => {
       e.preventDefault(); adminOk = false;
