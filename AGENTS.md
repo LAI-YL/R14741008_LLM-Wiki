@@ -36,6 +36,7 @@
 - `index.html` 必須位於專案最外層；`.nojekyll` 不可刪除（否則 GitHub Pages 會把 .md 轉掉）。
 - 本機預覽：在專案根目錄執行 `python3 -m http.server 8000`，再開啟 `http://localhost:8000`（直接雙擊 html 會因瀏覽器安全限制而讀不到 md）。
 - 檢查工具：`python3 tools/lint.py`（只用 Python 標準函式庫）。
+- **版本號（避免快取）**：修改 `style.css`、`md.js`、`app.js` 時，要同步更新 `index.html` 中這些檔案後面的 `?v=` 版本號（格式 `YYYYMMDD` 加一個字母，例如 `20261120a`）；修改 `decks/_shared/deck.css`、`deck.js` 時，更新 `templates/deck.html` 的版本號，再重新複製到每個 `decks/<slug>/index.html`。只新增或修改 Markdown 內容時不需要更新。
 
 ## 4. 資料夾結構與命名
 

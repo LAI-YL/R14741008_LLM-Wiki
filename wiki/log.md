@@ -2,6 +2,9 @@
 
 > 只能附加，最新的在最上面。標題格式：`## [YYYY-MM-DD] 動作 | 標題`，動作為 ingest／query／lint／schema／init。
 
+## [2026-11-16] schema | 網站程式的版本號規則
+- AGENTS.md 第 3 節新增：修改網站程式或簡報引擎時，要同步更新 `?v=` 版本號，避免瀏覽器與 GitHub Pages 沿用舊的快取檔案
+
 ## [2026-11-16] schema | 網站檔案加上版本號（修正快取問題）
 - 問題：GitHub Pages 上首頁仍是舊的總覽、點分頁沒有反應。研判是瀏覽器沿用舊的 `app.js` 快取，搭配新的 `index.html`（新導覽的 `#/wiki` 在舊程式中不存在，全部導回舊總覽）
 - 修正：`index.html` 與 `templates/deck.html` 引用的 CSS／JS 加上 `?v=` 版本號；`decks/what-is-audit/index.html` 重新複製模板
