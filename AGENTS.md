@@ -90,9 +90,9 @@ us-audit-wiki/
 | 類型 | 資料夾 | slug 規則 | 範例 |
 |---|---|---|---|
 | source | `wiki/sources/` | `src-` + 原始檔 slug | `src-us-audit-primer` |
-| standard | `wiki/standards/` | 機構 + 編號；整套準則用名稱 | `as-3101`、`au-c-700`、`pcaob-auditing-standards` |
+| standard | `wiki/standards/` | 機構 + 編號；整套準則用名稱；法規用英文法規名 | `as-3101`、`au-c-700`、`pcaob-auditing-standards`、`sarbanes-oxley-act` |
 | concept | `wiki/concepts/` | 英文概念名 | `materiality`、`going-concern` |
-| entity | `wiki/entities/` | 機構縮寫或法規名 | `pcaob`、`sarbanes-oxley-act` |
+| entity | `wiki/entities/` | 機構縮寫（只放組織；法律、法規放 standard） | `pcaob`、`sec` |
 | synthesis | `wiki/syntheses/` | 描述性名稱，比較用 `-vs-` | `pcaob-vs-aicpa-standards` |
 | note | `notes/` | `YYYY-MM-DD-` + 主題 slug | `2026-11-20-cam-vs-kam` |
 | slides | `slides/` | **與筆記相同的主題 slug（去掉日期）** | `cam-vs-kam` |

@@ -20,6 +20,7 @@
 - [AR-C 70 財務報表編製服務（Preparation）](standards/ar-c-70.md) — 無確信、無報告、不需獨立性
 - [AR-C 80 財務報表代編服務（Compilation）](standards/ar-c-80.md) — 無確信，須出報告，不獨立時要聲明
 - [AR-C 90 財務報表核閱服務（SSARS Review）](standards/ar-c-90.md) — 有限確信，只做詢問與分析，必須獨立
+- [SOX 沙賓法案](standards/sarbanes-oxley-act.md) — 2002 年聯邦法律，成立 PCAOB；第 404 條是 ICFR 查核的法源
 
 ## 概念 Concepts
 - [重大性（Materiality）](concepts/materiality.md) — 整體重大性、執行重大性與明顯微小門檻
@@ -39,7 +40,6 @@
 - [AICPA 美國會計師公會](entities/aicpa.md) — 透過 ASB 制定非上市公司審計準則
 - [PCAOB 公開發行公司會計監督委員會](entities/pcaob.md) — 依 SOX 成立，監督上市公司查核人員
 - [SEC 美國證券交易委員會](entities/sec.md) — 證券市場主管機關，監督 PCAOB
-- [SOX 沙賓法案](entities/sarbanes-oxley-act.md) — 2002 年法案，成立 PCAOB 並要求 ICFR 查核
 
 ## 綜合分析 Syntheses
 - [PCAOB 與 AICPA 審計準則比較](syntheses/pcaob-vs-aicpa-standards.md) — 兩套準則的適用對象與主要差異
