@@ -195,6 +195,17 @@ a { color: var(--primary); text-decoration: none; border-bottom: 1px dashed curr
 .slide-summary ul > li { padding-left: 70px; }
 .slide-foot { color: #8A93A6; }
 
+/* 章節頁：深色底（主題的白底會蓋掉基礎樣式，需在此重設） */
+.slide-section { background: #13233A; color: #FFFFFF; }
+.slide-section::before { background: var(--accent); }
+.slide-section h2 { color: #FFFFFF; font-size: 60px; background: linear-gradient(transparent 70%, rgba(200,137,43,.55) 70%); }
+.slide-section .slide-foot { color: #8E9BB3; }
+/* 封面標題：各行長度平均，避免在詞中間斷行 */
+.slide-cover h1 { text-wrap: balance; max-width: 760px; font-size: 64px; }
+/* 圖解（diagrams）比圖示寬，給較大的空間 */
+.figure-wrap:has(img[src*="/diagrams/"]) .fig-img { flex-basis: 56%; }
+.slide-key img { max-width: 100%; }
+
 /* 列印／存 PDF：每頁一張投影片 */
 @page { size: 1280px 720px; margin: 0; }
 @media print {

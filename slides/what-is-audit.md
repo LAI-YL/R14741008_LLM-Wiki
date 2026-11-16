@@ -81,14 +81,10 @@ PCAOB 依沙賓法案成立，是非營利機構；它管的是「查核人員�
 
 來源：[[auditor-independence]]
 
-<!-- slide: figure -->
-![查核流程](assets/diagrams/audit-process.svg)
-
+<!-- slide: key -->
 ## 查核的六個步驟
 
-從確認獨立性開始，
-
-到出具查核報告結束。
+![查核流程|1100](assets/diagrams/audit-process.svg)
 
 ::: notes
 1 承接（確認獨立性）→ 2 規劃與風險評估 → 3 內部控制 → 4 取得證據（函證、存貨監盤、律師函）→ 5 完成查核（期後事項、繼續經營）→ 6 報告。

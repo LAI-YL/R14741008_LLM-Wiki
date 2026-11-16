@@ -2,6 +2,11 @@
 
 > 只能附加，最新的在最上面。標題格式：`## [YYYY-MM-DD] 動作 | 標題`，動作為 ingest／query／lint／schema／init。
 
+## [2026-11-16] deck | 審計是什麼？從風險到意見
+- 新增播放器：`decks/what-is-audit/index.html`（模板原封不動複製）
+- 逐頁截圖檢查發現 3 個畫面問題（章節頁白字白底、封面標題斷行、圖解字太小），修正 `decks/_shared/deck.css` 主題，並把查核流程圖改成 `key` 頁滿版顯示
+- 新增 `docs/reflection.md`，更新執行紀錄
+
 ## [2026-11-16] slides | 審計是什麼？從風險到意見
 - 新增逐頁稿：`slides/what-is-audit.md`（28 頁、3 章、3 題小測驗），內容只取自研究筆記
 - lint 第 1 次：1 error、2 warning（簡體字「来源」、播放器尚未建立）；人工比對發現 1 句筆記沒有的評價，已刪改
