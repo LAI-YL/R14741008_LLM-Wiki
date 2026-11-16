@@ -136,7 +136,7 @@
     renderToc(null); setNav("admin");
     content.innerHTML = `<div class="lock">
       <h1>維護者專區</h1>
-      <p class="muted">這裡是維護知識庫用的後台資訊，請輸入密碼。</p>
+      <p class="muted">這裡是維護知識庫用的後台資訊，請輸入密碼。離開維護者專區後，下次進入需要重新輸入。</p>
       <form id="lockForm"><input id="lockInput" type="password" placeholder="密碼" autocomplete="current-password" autofocus>
       <button type="submit" class="btn primary">進入</button></form>
       <p id="lockMsg" class="lock-msg" role="alert"></p>
@@ -381,6 +381,11 @@
     $("#sidebar").classList.remove("open");
     window.scrollTo(0, 0);
     try {
+      // 離開維護者專區（切到任何前台頁面）就自動上鎖，下次進入要重新輸入密碼
+      if (!isAdminRoute(hash) && adminOk) {
+        adminOk = false;
+        try { sessionStorage.removeItem("admin-ok"); } catch (e) { /* 忽略 */ }
+      }
       if (isAdminRoute(hash) && !adminOk) return showLock();
       if (hash.startsWith("#/p/")) return await showWikiPage(hash.slice(4));
       if (hash.startsWith("#/n/")) return await showNote(hash.slice(4));
