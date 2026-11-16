@@ -155,13 +155,43 @@
   }
 
   // ---------- 畫面零件 ----------
+  // 側邊欄：分類依固定順序顯示（不受 index.md 順序影響），每類可折疊；子頁依標題排序
+  const TOC_ORDER = ["總覽", "機構", "概念", "準則", "綜合分析"];
+  const strokeCollator = (() => {
+    try { return new Intl.Collator("zh-TW-u-co-stroke", { sensitivity: "base" }); }
+    catch (e) { return new Intl.Collator("zh-TW", { sensitivity: "base" }); }
+  })();
+  // 逐字比較：數字（整段數字依數值由小到大）→ 英文（A～Z，不分大小寫）→ 中文（依筆畫數）；
+  // 第一個字相同就比第二個字，以此類推。空白與標點略過。
+  function titleCompare(a, b) {
+    const tokens = (s) => (s.match(/\d+|[A-Za-z]|[^\sA-Za-z\d\-–—_.,;:!?'"()（）［］【】、，。：；！？／\/&＆·・]/g) || []);
+    const rank = (t) => (/^\d/.test(t) ? 0 : /^[A-Za-z]$/.test(t) ? 1 : 2);
+    const ta = tokens(a), tb = tokens(b);
+    for (let i = 0; i < Math.min(ta.length, tb.length); i++) {
+      const x = ta[i], y = tb[i], rx = rank(x), ry = rank(y);
+      if (rx !== ry) return rx - ry;
+      let d = 0;
+      if (rx === 0) d = parseInt(x, 10) - parseInt(y, 10);
+      else if (rx === 1) d = x.toUpperCase() < y.toUpperCase() ? -1 : x.toUpperCase() > y.toUpperCase() ? 1 : 0;
+      else d = strokeCollator.compare(x, y);
+      if (d) return d;
+    }
+    return ta.length - tb.length;
+  }
   function renderToc(active) {
-    $("#toc").innerHTML = sections.filter((sec) => !isSourceSection(sec.name)).map((sec) => `
-      <h3>${esc(sec.name)}</h3>
-      <ul>${sec.slugs.map((s) => {
-        const p = pages.get(s);
-        return `<li><a href="#/p/${s}" class="${s === active ? "active" : ""}" title="${esc(p.summary)}">${esc(p.title)}</a></li>`;
-      }).join("")}</ul>`).join("");
+    const shown = sections.filter((sec) => !isSourceSection(sec.name));
+    const pos = (name) => { const i = TOC_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
+    shown.sort((a, b) => pos(a.name) - pos(b.name));
+    $("#toc").innerHTML = shown.map((sec) => {
+      const slugs = [...sec.slugs].sort((x, y) => titleCompare(pages.get(x).title, pages.get(y).title));
+      const open = slugs.includes(active);
+      return `<details class="toc-sec"${open ? " open" : ""}>
+        <summary>${esc(sec.name)}<span class="toc-count">${slugs.length}</span></summary>
+        <ul>${slugs.map((s) => {
+          const p = pages.get(s);
+          return `<li><a href="#/p/${s}" class="${s === active ? "active" : ""}" title="${esc(p.summary)}">${esc(p.title)}</a></li>`;
+        }).join("")}</ul></details>`;
+    }).join("");
   }
   function setNav(name) {
     document.querySelectorAll(".top-links a, .mobile-nav a").forEach((a) => a.classList.toggle("active", a.dataset.nav === name));

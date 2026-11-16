@@ -6,7 +6,7 @@
 [wiki]
   error  frontmatter 缺欄位或 type 不合法；檔名不是小寫 slug；slug 重複；放錯資料夾
   error  [[wikilink]] 指向不存在的頁面；sources 指向不存在的 source 頁
-  error  頁面沒有登記在 wiki/index.md；index.md 連到不存在的檔案
+  error  頁面沒有登記在 wiki/index.md；index.md 連到不存在的檔案；index.md 的標題與頁面 title 不一致
   error  [!todo] 出現在 source 頁以外的 wiki 頁面
   warn   孤兒頁；「相關頁面」少於 2 個連結
 [notes]
@@ -188,6 +188,12 @@ for line in (WIKI / "index.md").read_text(encoding="utf-8").splitlines():
     m = INDEX_LINK_RE.match(line.strip())
     if m and not (WIKI / m.group(1)).exists():
         errors.append(f"wiki/index.md: 連到不存在的檔案 {m.group(1)}")
+    elif m:
+        # 側邊欄顯示的是 index.md 的連結文字，必須與頁面 frontmatter 的 title 完全一致
+        shown = re.match(r"- \[([^\]]+)\]", line.strip())
+        fm, _ = parse_frontmatter((WIKI / m.group(1)).read_text(encoding="utf-8"))
+        if shown and fm and fm.get("title") and shown.group(1) != fm["title"]:
+            errors.append(f"wiki/index.md: 「{shown.group(1)}」與頁面標題「{fm['title']}」不一致（側邊欄會顯示不完整）")
 indexed = index_entries(WIKI / "index.md")
 for slug, p in pages.items():
     if slug not in indexed:

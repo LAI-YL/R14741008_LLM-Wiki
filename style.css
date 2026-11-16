@@ -303,3 +303,16 @@ details.maint summary { cursor: pointer; color: var(--ink-soft); font-size: 14px
 .lock input { flex: 1; padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; font: inherit; }
 .lock .btn { cursor: pointer; font: inherit; font-weight: 600; }
 .lock-msg { color: #B03A2E; min-height: 1.5em; font-size: 14px; }
+/* 側邊欄：可折疊的分類 */
+.toc details.toc-sec { margin: 6px 0; border-radius: 8px; }
+.toc details.toc-sec > summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px;
+  font-size: 13px; letter-spacing: .06em; color: var(--ink-soft); font-weight: 600;
+  padding: 8px 10px; border-radius: 8px; user-select: none;
+}
+.toc details.toc-sec > summary::-webkit-details-marker { display: none; }
+.toc details.toc-sec > summary::before { content: "▸"; font-size: 12px; transition: transform .15s; }
+.toc details.toc-sec[open] > summary::before { transform: rotate(90deg); }
+.toc details.toc-sec > summary:hover { background: var(--primary-soft); color: var(--primary); }
+.toc .toc-count { margin-left: auto; font-size: 11px; font-weight: 500; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; }
+.toc details.toc-sec ul { padding-left: 8px; margin-bottom: 6px; }

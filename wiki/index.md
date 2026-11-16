@@ -24,11 +24,11 @@
 
 ## 概念 Concepts
 - [重大性（Materiality）](concepts/materiality.md) — 整體重大性、執行重大性與明顯微小門檻
-- [查核意見類型](concepts/audit-opinion-types.md) — 四種意見與「性質 × 廣泛性」判斷矩陣
+- [查核意見類型（Types of Audit Opinions）](concepts/audit-opinion-types.md) — 四種意見與「性質 × 廣泛性」判斷矩陣
 - [審計風險模型（Audit Risk Model）](concepts/audit-risk-model.md) — AR = IR × CR × DR，只有 DR 可控制
 - [關鍵查核事項（CAM／KAM）](concepts/critical-audit-matters.md) — CAM 三條件、不適用對象與 KAM 差異
 - [舞弊風險（Fraud Risk）](concepts/fraud-risk.md) — 舞弊三角與兩大推定舞弊風險
-- [存貨監盤與律師函](concepts/inventory-and-litigation.md) — 監盤追查方向與律師詢證函
+- [存貨監盤與律師函（Inventory & Litigation）](concepts/inventory-and-litigation.md) — 監盤追查方向與律師詢證函
 - [外部函證（External Confirmations）](concepts/external-confirmations.md) — 積極式與消極式函證、替代程序
 - [期後事項（Subsequent Events）](concepts/subsequent-events.md) — Type 1／Type 2 與雙重日期
 - [繼續經營（Going Concern）](concepts/going-concern.md) — 一年評估期間、改善計畫與報告用語
