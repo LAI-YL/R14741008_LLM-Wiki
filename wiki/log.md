@@ -4,6 +4,7 @@
 
 ## [2026-11-16] lint | AS 2901 改列待查證
 - [[subsequent-events]]、[[pcaob-vs-aicpa-standards]]：PCAOB 對應準則由「AS 2901」改為「尚未確認」
+- [[pcaob-auditing-standards]]：AS 2000 系列的舉例中刪除「AS 2901 期後始獲知之事實」
 - [[src-rag-audit-cards]] 的「待查證／疑點」新增 auc-560 一項：記錄卡片原始說法、與 PCAOB 官網不符之處，以及影響的頁面；待下載 R009、R010 後 ingest 確認
 - 研究筆記 `notes/2026-11-16-subsequent-events-intro.md` 的缺口說明同步更新
 
