@@ -4,8 +4,8 @@
  *   notes/index.md   → 研究筆記清單
  *   slides/index.md  → 簡報清單（播放器在 decks/<slug>/）
  *   raw/_reading-list.md → 建議文獻清單
- * 前台（給學習者）：講義庫 #/、知識庫 #/wiki、#/p/…、筆記 #/n/…、逐頁稿 #/s/…
- * 後台（給維護者）：維護者專區 #/admin → 日誌、建議文獻、專案說明、素材庫
+ * 前台（給學習者）：講義庫 #/、知識庫 #/wiki、#/p/…、筆記 #/n/…
+ * 後台（給維護者）：維護者專區 #/admin → 日誌、建議文獻、專案說明、素材庫、資料來源、逐頁稿 #/s/…
  * Markdown 與 LaTeX 渲染在 md.js。
  */
 (() => {
@@ -127,7 +127,7 @@
   let adminOk = false;
   try { adminOk = sessionStorage.getItem("admin-ok") === ADMIN_HASH; } catch (e) { /* 無法使用 sessionStorage 時只記在記憶體 */ }
   const isAdminRoute = (h) => h === "#/admin" || h === "#/log" || h === "#/reading" || h === "#/assets" ||
-    h === "#/docs" || h.startsWith("#/d/") || (h.startsWith("#/p/") && isSource(h.slice(4)));
+    h === "#/docs" || h.startsWith("#/d/") || h.startsWith("#/s/") || (h.startsWith("#/p/") && isSource(h.slice(4)));
   async function sha256(text) {
     const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
     return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
@@ -221,7 +221,7 @@
     if (!n) { content.innerHTML = notFound("研究筆記"); return; }
     const { meta, body } = await loadDoc(n.path);
     const d = deckSlugOfNote(stem);
-    const actions = decks.has(d) ? `<div class="actions">${chip(`decks/${d}/`, "▶ 播放簡報", true)}${chip(`#/s/${d}`, "逐頁稿")}</div>` : "";
+    const actions = decks.has(d) ? `<div class="actions">${chip(`decks/${d}/`, "▶ 播放簡報", true)}</div>` : "";
     const used = Array.isArray(meta.wiki_pages) ? meta.wiki_pages.length : 0;
     renderInto(content, `${backTo("#/", "講義庫")}${metaBar(meta, `<span class="tag-plain">依據 ${used} 個 wiki 頁面</span>`)}${actions}
       <article class="md">${MD.render(body, ctxFor("notes/"))}</article>`);
@@ -237,13 +237,13 @@
 
 
   async function showSlides(slug) {
-    renderToc(null); setNav("lessons");
+    renderToc(null); setNav("admin");
     const s = decks.get(slug);
     if (!s) { content.innerHTML = notFound("簡報"); return; }
     const { meta, body } = await loadDoc(s.path);
     const slides = splitSlides(body);
     const ctx = ctxFor("slides/");
-    renderInto(content, `${backTo("#/", "講義庫")}${metaBar(meta)}
+    renderInto(content, `${backTo("#/admin", "維護者專區")}${metaBar(meta)}
       <div class="actions">${chip(`decks/${slug}/`, "▶ 播放簡報", true)}${meta.note && notes.has(meta.note) ? chip(`#/n/${meta.note}`, "研究筆記") : ""}</div>
       <article class="md"><h1>${esc(meta.title || s.title)}｜逐頁稿</h1>
       ${slides.map((sl, i) => `<section class="slide-card"><div class="slide-card-head">第 ${i + 1} 頁 <span class="badge">${esc(sl.type)}</span></div>${MD.render(sl.md, ctx)}</section>`).join("")}
@@ -303,7 +303,6 @@
         <div class="lesson-actions">
           ${decks.has(d) ? `<a class="btn primary" href="decks/${d}/" target="_blank" rel="noopener">▶ 播放簡報</a>` : ""}
           <a class="btn" href="#/n/${n.stem}">閱讀筆記</a>
-          ${decks.has(d) ? `<a class="btn ghost" href="#/s/${d}">逐頁稿</a>` : ""}
         </div></article>`;
     };
     renderInto(content, `
@@ -366,6 +365,8 @@
       </div>
       <section class="md"><h2>資料來源（${totalFiles}）</h2><p class="muted">每份原始資料的摘要與「待查證／疑點」。</p>
       <ul>${srcs.map((sl) => `<li><a href="#/p/${sl}">${esc(pages.get(sl).title)}</a>（${nFiles(sl)}）</li>`).join("")}</ul>
+      <h2>簡報逐頁稿（${decks.size}）</h2><p class="muted">每份簡報的逐頁內容與講者備註；學習者直接從講義庫播放簡報。</p>
+      <ul>${[...decks.values()].map((d) => `<li><a href="#/s/${d.slug}">${esc(d.title)}</a></li>`).join("")}</ul>
       <h2>最近更新</h2><ul>${recent}</ul></section>`);
     $("#lockBtn").addEventListener("click", (e) => {
       e.preventDefault(); adminOk = false;
