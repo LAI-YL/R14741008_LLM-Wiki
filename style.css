@@ -53,11 +53,7 @@ code {
 }
 .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
 .brand:hover { text-decoration: none; }
-.brand-mark {
-  font-family: var(--serif); font-size: 26px; font-weight: 700;
-  width: 40px; height: 40px; display: grid; place-items: center;
-  border: 2px solid var(--accent); border-radius: 8px; color: var(--accent);
-}
+.brand-mark { width: 40px; height: 40px; display: block; flex: none; }  /* 網站標誌：assets/brand/site-logo.svg */
 .brand-text { font-family: var(--serif); font-size: 19px; font-weight: 700; line-height: 1.2; }
 .brand-text small { display: block; font-family: var(--sans); font-size: 12px; font-weight: 400; opacity: .75; letter-spacing: .04em; }
 .top-links { margin-left: auto; display: flex; gap: 6px; }

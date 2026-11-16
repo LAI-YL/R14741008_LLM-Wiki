@@ -51,6 +51,7 @@ us-audit-wiki/
 │   ├── index.md         ← 素材登記表（只能用登記過的素材）
 │   ├── icons/           ← 64×64 線條圖示（自繪 SVG）
 │   ├── diagrams/        ← 概念圖解（自繪 SVG）
+│   ├── brand/           ← 本網站自己的標誌（site-logo.svg，網站頂欄用）
 │   ├── logos/           ← 機構官方標誌（由使用者放入）
 │   └── mascot/          ← 吉祥物「貓頭鷹審計師」
 ├── tools/lint.py        ← 健康檢查腳本
