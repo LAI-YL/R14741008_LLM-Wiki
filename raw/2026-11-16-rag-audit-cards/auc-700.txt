@@ -1,0 +1,18 @@
+Standard: AU-C Section 700
+Title (En): Forming an Opinion and Reporting on Financial Statements
+Title (Zh): 查核意見之形成與標準查核報告之出具
+Category: SAS / AU-C
+Domain: 查核報告出具
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 3101
+
+Summary (核心規範):
+定義非公開發行公司標準無保留意見（Unmodified Opinion）之四段式標準架構：1. 意見段 (Opinion)、2. 意見基礎段 (Basis for Opinion)、3. 管理階層責任段、4. 查核人員責任段。明確區分管理階層編報責任與會計師查核責任。
+
+Exam Trap (考試陷阱):
+⚠️ 結構差異：新版 AU-C 700 與 PCAOB 一致，第一段『直接破題發表意見段』，第二段緊接著『意見基礎段』，管理階層責任與查核人員責任則移至後半部。
+
+TBS Tip (實務要點):
+注意意見基礎段必須明確宣示：查核人員具備獨立性（Independent）、遵守倫理規範，並確信已取得足夠且適切之查核證據以作為意見基礎。
+
+Keywords: 700, opinion, unmodified, standard report, basis for opinion, 無保留意見, 查核報告, 3101

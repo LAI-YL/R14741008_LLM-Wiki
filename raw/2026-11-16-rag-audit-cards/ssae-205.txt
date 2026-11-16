@@ -1,0 +1,18 @@
+Standard: AT-C Section 205 (SSAE)
+Title (En): Examination Engagements
+Title (Zh): 檢定確信案件（合理確信規範）
+Category: SSAE (AT-C)
+Domain: 檢定確信案件
+Scope: 非歷史財務報表標的（如 SOC 報告、合規性、溫室氣體排放）
+Related PCAOB Standard: PCAOB Attestation
+
+Summary (核心規範):
+會計師針對非歷史財務報表之標的主張提供最高規格的『合理確信 (Reasonable Assurance)』。結論以正面肯定形式表述：『In our opinion, the subject matter is presented in accordance with the criteria...』。
+
+Exam Trap (考試陷阱):
+⚠️ 核心對比：Examination 在 SSAE 體系中等同於審計（Audit）的規格！會計師『必須完全獨立』、必須執行充分實質性程序、且必須取得管理階層書面聲明書（Written Representation）。
+
+TBS Tip (實務要點):
+若標的資訊存在重大不實，出具保留（Qualified）或否定意見（Adverse）；若查核範圍受限，出具保留或無法表示意見（Disclaimer）。
+
+Keywords: 205, ssae, at-c, examination, reasonable assurance, in our opinion, 檢定案件, 合理確信, 正面意見

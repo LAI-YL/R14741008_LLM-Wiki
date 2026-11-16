@@ -1,0 +1,18 @@
+Standard: AR-C Section 90 (SSARS)
+Title (En): Review of Financial Statements under SSARS
+Title (Zh): 非公開發行公司財務報表複核服務 (Review)
+Category: SSARS (AR-C)
+Domain: 非發行公司財報複核
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: N/A
+
+Summary (核心規範):
+提供『有限確信 (Limited / Negative Assurance)』。查核程序僅限定為：(1) 分析性程序 (Analytical Procedures)、(2) 向管理階層詢問 (Inquiry)。不執行控制測試、實質性交易抽核或實體監盤。
+
+Exam Trap (考試陷阱):
+⚠️ 嚴厲門檻：執行 SSARS Review『必須具備獨立性』！若會計師缺乏獨立性，『絕對不可出具 Review 報告』！此時連出具保留意見都不被允許，只能降轉為 Compilation 或終止委任！
+
+TBS Tip (實務要點):
+必須取得管理階層書面聲明書（Representation Letter）。報告結論文字：『We are not aware of any material modifications that should be made... in order for them to be in accordance with US GAAP』。
+
+Keywords: 90, ssars review, limited assurance, inquiry, analytical procedures, must be independent, 複核, 有限確信, 必須獨立

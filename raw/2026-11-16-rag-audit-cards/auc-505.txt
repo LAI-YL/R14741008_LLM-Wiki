@@ -1,0 +1,18 @@
+Standard: AU-C Section 505
+Title (En): External Confirmations
+Title (Zh): 外部函證程序（應收帳款與銀行函證）
+Category: SAS / AU-C
+Domain: 外部函證程序
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 2310
+
+Summary (核心規範):
+規範向第三方取得之外部書面證據。主要區分：積極式函證（Positive Confirmation，無論正確與否皆需回函）與消極式函證（Negative Confirmation，僅在金額不符時回函）。
+
+Exam Trap (考試陷阱):
+⚠️ 嚴格限制：消極式函證僅在以下條件同時滿足時才可採用：(1) RMM 評估為極低、(2) 涉及大量同質小額帳戶、(3) 預期未達率或錯誤率極低、(4) 確信受函證者不會直接丟棄信函。消極函證未回函『不能』作為高品質證據！
+
+TBS Tip (實務要點):
+積極式函證未回函時，查核人員必須執行替代程序（Alternative Procedures），例如核對期後收款紀錄（Subsequent Cash Receipts）及出貨單據憑證。
+
+Keywords: 505, confirmation, accounts receivable, positive confirmation, negative confirmation, 函證, 積極函證, 消極函證, 替代程序, 2310

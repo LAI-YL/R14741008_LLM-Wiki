@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美國審計知識資料庫｜US Audit LLM Wiki</title>
+  <meta name="description" content="由 AI 依 AGENTS.md 規則持續維護的繁體中文美國審計知識庫（LLM Wiki）。">
+  <link rel="icon" href="assets/mascot/owl-avatar.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-label="開啟目錄">☰</button>
+    <a class="brand" href="#/">
+      <span class="brand-mark">§</span>
+      <span class="brand-text">美國審計知識資料庫<small>US Audit LLM Wiki</small></span>
+    </a>
+    <nav class="top-links">
+      <a href="#/" data-nav="home">總覽</a>
+      <a href="#/notes" data-nav="notes">研究筆記</a>
+      <a href="#/decks" data-nav="decks">簡報</a>
+      <a href="#/reading" data-nav="reading">文獻清單</a>
+      <a href="#/log" data-nav="log">日誌</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <nav class="mobile-nav">
+        <a href="#/">總覽</a><a href="#/notes">研究筆記</a><a href="#/decks">簡報</a><a href="#/reading">文獻清單</a><a href="#/log">日誌</a>
+      </nav>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="搜尋標題或內文…（例：重大性、AS 2201）" autocomplete="off">
+      </div>
+      <div id="searchResults" class="search-results" hidden></div>
+      <nav id="toc" class="toc"><p class="muted">載入目錄中…</p></nav>
+    </aside>
+
+    <main class="content" id="content">
+      <p class="muted">載入中…</p>
+    </main>
+  </div>
+
+  <footer class="footer">
+    內容由 AI 依 <code>AGENTS.md</code> 規則從 <code>raw/</code> 原始資料整理而成，僅供學習參考，實務請以 PCAOB／AICPA 官方準則為準。
+  </footer>
+
+  <script src="vendor/katex/katex.min.js"></script>
+  <script src="md.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

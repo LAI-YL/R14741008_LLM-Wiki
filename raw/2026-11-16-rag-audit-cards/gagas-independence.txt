@@ -1,0 +1,18 @@
+Standard: GAGAS Independence Framework
+Title (En): GAGAS Conceptual Framework for Independence
+Title (Zh): GAGAS 政府審計獨立性觀念架構
+Category: GAGAS (Yellow Book)
+Domain: 政府審計人員獨立性規範
+Scope: 政府審計人員及承接政府查核之執業會計師
+Related PCAOB Standard: AICPA vs GAO Independence
+
+Summary (核心規範):
+採用概念架構評估威脅（Threats）與防範措施（Safeguards）。在提供非審計服務（Non-audit Services，如記帳、編表）時，受查機關必須指派具備適當技能、知識與經驗（SKE: Skills, Knowledge, Experience）之主管監督該服務。
+
+Exam Trap (考試陷阱):
+⚠️ 嚴苛禁止：審計人員『絕對不可承擔任何管理階層職責 (Management Responsibilities)』！無論加裝何種防範措施，承擔管理責任均直接徹底瓦解獨立性！
+
+TBS Tip (實務要點):
+GAGAS 規定查核人員每兩年必須完成至少 80 小時的持續專業教育（CPE），其中至少 24 小時必須直接與政府環境或政府審計相關。
+
+Keywords: gagas independence, ske, management responsibilities, cpe requirements, 政府審計獨立性, 管理階層責任

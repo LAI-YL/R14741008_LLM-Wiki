@@ -1,0 +1,18 @@
+Standard: PCAOB AS 2201
+Title (En): An Audit of Internal Control Over Financial Reporting (ICOFR)
+Title (Zh): 內部控制與財務報導之整合查核 (Integrated Audit)
+Category: PCAOB AS
+Domain: 內控與財報整合查核
+Scope: 公開發行公司 (Issuers - Accelerated & Large Accelerated Filers)
+Related PCAOB Standard: SOX Section 404
+
+Summary (核心規範):
+執行 Top-down, risk-based approach。從財務報表層級、實體層級控制（Entity-Level Controls）向下檢驗至重大帳戶及作業控制。將內控缺失區分為：控制缺失（Control Deficiency）、顯著缺失（Significant Deficiency）與重大缺失（Material Weakness）。
+
+Exam Trap (考試陷阱):
+⚠️ 必背考點：只要受查者在資產負債表日存在『哪怕僅有一項重大缺失 (Material Weakness)』，查核人員針對內控之意見『必須出具否定意見 (Adverse Opinion)』，即使當年度財報數字毫無錯誤！
+
+TBS Tip (實務要點):
+重大缺失之定義：存在重大不實表達未被及時預防或偵測出之『合理可能性 (Reasonable Possibility)』。顯著缺失則需書面通報審計委員會，但不出具否定意見。
+
+Keywords: 2201, pcaob, icofr, sox 404, material weakness, significant deficiency, adverse opinion, 內控整合查核, 重大缺失, 否定意見

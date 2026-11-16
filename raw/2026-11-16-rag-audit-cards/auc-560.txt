@@ -1,0 +1,18 @@
+Standard: AU-C Section 560
+Title (En): Subsequent Events and Subsequently Discovered Facts
+Title (Zh): 期後事項與期後始獲知之事實
+Category: SAS / AU-C
+Domain: 期後審計與報告責任
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 2901
+
+Summary (核心規範):
+明確界定兩大期後事項：Type 1 調整事項（期末已存在之狀況，期後取得新證據 -> 調整財報數字）；Type 2 揭露事項（期末後新發生之意外 -> 不改數字，重大者於附註揭露）。雙重日期（Dual Dating）規範。
+
+Exam Trap (考試陷阱):
+⚠️ 雙重日期核心考點：出具 Dual Dating（例如：February 15, 2026, except as to Note 7, which is as of March 3, 2026）僅針對該特定附註事項展延責任，『不會』使查核人員對全份財報的審計責任延長至 March 3！
+
+TBS Tip (實務要點):
+常見 Type 1：資產負債表日前已陷入財務困境之客戶於期後破產、年前訴訟於期後判決確定；常見 Type 2：期後廠房火災、發行新股或重大併購。
+
+Keywords: 560, subsequent events, dual dating, type 1, type 2, adjusting, nonadjusting, 期後事項, 雙重日期, 2901

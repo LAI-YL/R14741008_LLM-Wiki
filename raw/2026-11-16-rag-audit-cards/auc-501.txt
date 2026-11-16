@@ -1,0 +1,18 @@
+Standard: AU-C Section 501
+Title (En): Audit Evidence—Specific Considerations (Inventory & Litigation)
+Title (Zh): 查核證據之特定考量（存貨監盤與訴訟事件）
+Category: SAS / AU-C
+Domain: 特定科目查核證據
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 2510
+
+Summary (核心規範):
+存貨若屬重大，查核人員『必須親自執行實地監盤觀察』。訴訟事項則須向外部法律顧問寄發『律師詢證函 (Letter of Audit Inquiry)』以評估或有損失。
+
+Exam Trap (考試陷阱):
+⚠️ 考試陷阱：律師函是由『受查者管理階層』撰寫與簽署，但必須由『查核人員親自寄出與直接收受回函』！若律師無故拒絕回函，構成查核範圍受限（Scope Limitation），可能出具保留或無法表示意見。
+
+TBS Tip (實務要點):
+存貨監盤主要驗證『存在性 (Existence)』與『完整性 (Completeness)』，而非『評價與分攤 (Valuation)』。由帳卡追查至實體盤點係驗證存在；由實體盤點追查至帳卡係驗證完整。
+
+Keywords: 501, inventory, litigation, lawyer letter, 存貨監盤, 訴訟, 律師函, 範圍受限, 2510

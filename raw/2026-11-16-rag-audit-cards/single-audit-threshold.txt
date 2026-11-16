@@ -1,0 +1,18 @@
+Standard: Uniform Guidance 2 CFR 200 Subpart F
+Title (En): Single Audit Threshold and Scope
+Title (Zh): 單一審計門檻判定與重大計畫
+Category: Single Audit
+Domain: 單一審計門檻與範疇
+Scope: 單一會計年度內，支出聯邦補助款達法定門檻之實體
+Related PCAOB Standard: OMB Uniform Guidance
+
+Summary (核心規範):
+依據 OMB 規範，非營利機構或地方政府於同一會計年度內，『支出之聯邦補助資金 (Federal Awards Expended) 達到或超過 $1,000,000 美元』，即強制實施單一審計（Single Audit 或 Program-specific Audit）。
+
+Exam Trap (考試陷阱):
+⚠️ 法規數據：法定單一審計門檻為『$1,000,000 美元』！計算基準是『實際支出 (Expended)』，而不是『收到 (Received)』或『簽約核准 (Awarded)』之金額！
+
+TBS Tip (實務要點):
+單一審計將聯邦計畫依金額大小分為 Type A 與 Type B（Type A 判定基準門檻亦為 $1,000,000），採用風險基礎法（Risk-Based Approach）篩選出『重大計畫 (Major Programs)』執行重點合規審計。
+
+Keywords: single audit, uniform guidance, 2 cfr 200, 1000000, 100萬門檻, federal awards expended, major programs, 單一審計, 聯邦補助支出, 重大計畫, 100萬

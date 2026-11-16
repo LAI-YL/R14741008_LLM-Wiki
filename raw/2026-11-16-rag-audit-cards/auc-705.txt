@@ -1,0 +1,18 @@
+Standard: AU-C Section 705
+Title (En): Modifications to the Opinion in the Independent Auditor's Report
+Title (Zh): 非無保留意見（修正式意見）之出具判斷
+Category: SAS / AU-C
+Domain: 修正式意見判斷
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 3105
+
+Summary (核心規範):
+建立修正式意見矩陣。縱軸為原因：(1) 財報存在重大不實表達（GAAP Departure）、(2) 無法取得足夠適切證據（Scope Limitation）。橫軸為程度：重大但不廣泛（Material but NOT Pervasive）出具保留意見（Qualified）；重大且具廣泛性（Material and Pervasive）分別出具否定意見（Adverse）或無法表示意見（Disclaimer）。
+
+Exam Trap (考試陷阱):
+⚠️ 致命考點：若查核人員『缺乏獨立性 (Lack of Independence)』，不適用保留意見！唯一且必須出具『無法表示意見 (Disclaimer of Opinion)』，且報告極短，不得說明缺乏獨立性的具體原因！
+
+TBS Tip (實務要點):
+Pervasive（廣泛性）判斷標準：不侷限於單一特定報表項目、或佔整體財報實質龐大部分、或對使用者理解財報具根本性影響。
+
+Keywords: 705, qualified, adverse, disclaimer, pervasive, scope limitation, gaap departure, 保留意見, 否定意見, 無法表示意見, 廣泛性, 3105

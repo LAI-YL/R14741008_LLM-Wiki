@@ -1,0 +1,18 @@
+Standard: PCAOB AS 2110
+Title (En): Identifying and Assessing Risks of Material Misstatement
+Title (Zh): 上市公司重大不實表達風險之辨識與評估
+Category: PCAOB AS
+Domain: 上市公司風險評估
+Scope: 公開發行公司 (Issuers)
+Related PCAOB Standard: AU-C Section 315
+
+Summary (核心規範):
+著重於瞭解上市公司的商業模式、高階經理人薪酬激勵結構（Executive Compensation）、分析性程序及非常規交易，評估公司可能迫於華爾街分析師每季盈餘預期（Earnings Expectations）所產生之粉飾財報動機。
+
+Exam Trap (考試陷阱):
+⚠️ 考點注意：要求查核團隊成員間必須召開正式的舞弊腦力激盪會議（Brainstorming Session），且必須通盤評估科技與資訊系統變革對控制環境的衝擊。
+
+TBS Tip (實務要點):
+與非發行公司相比，PCAOB 更強調評估關鍵績效指標（KPIs）與高階主管獎金掛鉤之風險。
+
+Keywords: 2110, pcaob risk assessment, executive compensation, brainstorming, 上市公司風險評估

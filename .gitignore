@@ -1,0 +1,4 @@
+# 受著作權保護的原始全文不上傳（README 例外）
+raw/_private/*
+!raw/_private/README.md
+.DS_Store

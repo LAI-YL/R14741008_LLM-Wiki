@@ -1,0 +1,83 @@
+# 日誌 Log
+
+> 只能附加，最新的在最上面。標題格式：`## [YYYY-MM-DD] 動作 | 標題`，動作為 ingest／query／lint／schema／init。
+
+## [2026-11-16] schema | 封面副標題客製化
+- AGENTS.md 6.6：封面副標題要依主題寫出「讀者會搞懂什麼」，不可用通用句、不可與其他簡報重複；`templates/slides.md` 同步更新
+- `tools/lint.py`（使用者同意）：逐頁稿必須有 `subtitle`；通用句或模板文字、與其他簡報重複 → error；封面副標題與 `subtitle` 不一致 → warning
+
+## [2026-11-16] schema | 簡報主題定為「明亮卡片」
+- 使用者從三種風格（經典學院、明亮卡片、深色聚焦）中選定明亮卡片，並要求圖片與貓頭鷹背後不加底色框
+- 寫入 `decks/_shared/deck.css` 與 AGENTS.md 第 10 節
+- 調整：封面改為深色底；貓頭鷹改用新增的貼紙版 `owl-*-sticker.svg`（7 個動作，順著輪廓的米白描邊、圓角收邊、無光暈），已登記於 `assets/index.md`
+
+## [2026-11-16] asset | 吉祥物正式版與「左文右圖」頁型
+- 吉祥物「貓頭鷹審計師」正式版 8 張（`assets/mascot/owl-*.svg`：預設、打招呼、思考、講解、答對了、注意、閱讀、頭像），已登記；頭像設為網站與簡報的圖示
+- 新增簡報頁型 `figure-right`（左文右圖）
+- 修正 `assets/diagrams/opinion-matrix.svg`：「問題性質」欄標改為與欄標題同列置中
+
+## [2026-11-16] asset | 簡報素材庫與吉祥物草稿
+- 新增 `assets/`：線條圖示 10 個、概念圖解 6 張（標準地圖、查核流程、審計風險模型、舞弊三角、意見矩陣、確信程度），登記於 `assets/index.md`
+- 吉祥物「貓頭鷹審計師」草稿 3 版（`assets/mascot/draft-*.svg`），待使用者選定
+- `assets/logos/`：官方 Logo 由使用者放入
+- 播放器支援圖片與「左圖右文」頁型 `figure`；網站新增素材庫頁（`#/assets`）
+- AGENTS.md 新增 6.8 素材規則；`tools/lint.py` 檢查素材路徑、登記與 figure 頁
+
+## [2026-11-16] lint | 來源頁改名
+- [[src-rag-audit-cards]] 改名為「美國審計準則重點資料卡（24 張）」；[[src-pcaob-official-standards-web]] 改名為「PCAOB 官方準則重點摘要」；[[src-official-sources-web-2]] 改名為「審計準則與法規官方資料摘要」
+- 各頁「來源」段落移除括號說明
+
+## [2026-11-16] ingest | 官方與權威來源重點摘要（第二輪）
+- 使用者同意的一次性例外（同上一筆），補充更多現有主題
+- 來源：`raw/2026-11-16-official-sources-web-2.md` → [[src-official-sources-web-2]]
+- 更新：[[fraud-risk]]、[[going-concern]]、[[as-2201]]、[[external-confirmations]]、[[single-audit]]、[[auditor-independence]]
+- 解決待查證 2 項（[[src-rag-audit-cards]]）；新增差異 1 項（收入認列推定）；新增待查證 2 項
+
+## [2026-11-16] ingest | PCAOB 官方準則重點摘要（網路整理）
+- 使用者同意的一次性例外：AI 上網查 PCAOB 官網，只補充現有主題的核心知識點（AGENTS.md 不變）
+- 來源：`raw/2026-11-16-pcaob-official-standards-web.md` → [[src-pcaob-official-standards-web]]
+- 更新：[[audit-risk-model]]、[[materiality]]、[[fraud-risk]]、[[audit-opinion-types]]、[[critical-audit-matters]]、[[pcaob-auditing-standards]]
+- 待查證 3 項（官網部分頁面無法讀取）：見 [[src-pcaob-official-standards-web]]
+
+## [2026-11-16] schema | 簡報讀者與字數規則
+- AGENTS.md 6.6：簡報讀者為審計初學者；一頁一個概念、正文不超過 60 字、要點最多 3 點、專有名詞附白話解釋、細節放講者備註；頁數不限
+
+## [2026-11-16] schema | 研究筆記、簡報與建議文獻流程
+- AGENTS.md 新增 6.4 研究筆記、6.5 建議文獻 wiki 化、6.6 逐頁稿、6.7 HTML 簡報，以及 LaTeX 寫法
+- 新增 `notes/`、`slides/`、`decks/_shared/`（共用簡報引擎）、`raw/_reading-list.md`、`raw/_private/`、`templates/note.md`、`templates/slides.md`、`templates/deck.html`
+- 網站新增「研究筆記／簡報／文獻清單」頁；共用 Markdown 渲染器 `md.js` 支援 LaTeX（KaTeX 放在 `vendor/`）
+- `tools/lint.py` 擴充：`[!todo]` 只能用在 source 頁、筆記／逐頁稿／播放器 slug 一致、文獻清單格式、金額錢字號
+- 格式調整：[[single-audit]]、[[src-rag-audit-cards]] 的金額改寫為 `\$`；[[audit-risk-model]] 加入 LaTeX 公式
+
+## [2026-11-16] schema | 不確定內容只記在 source 頁
+- AGENTS.md：不確定或資訊尚缺的內容不寫進 wiki 頁面，只記在 source 頁的「待查證／疑點」；`[!todo]` 只能用在 source 頁
+- 依新規則移除可疑說法：[[fraud-risk]]、[[going-concern]]、[[emphasis-of-matter]]、[[critical-audit-matters]]、[[at-c-215]]
+- 移除缺資料提示：[[as-2201]]、[[pcaob-auditing-standards]]、[[overview]]；[[single-audit]] 改為一行附註
+- 被移除的說法完整記錄於 [[src-rag-audit-cards]]、[[src-us-audit-primer]]
+
+## [2026-11-16] ingest | 上一份作業 RAG 資料卡（24 張）
+- 來源：`raw/2026-11-16-rag-audit-cards/`（24 個 .txt，原檔照原樣複製）→ [[src-rag-audit-cards]]
+- 新增準則：[[as-2110]]、[[au-c-700]]、[[gagas]]、[[at-c-205]]、[[at-c-210]]、[[at-c-215]]、[[at-c-320]]、[[ar-c-70]]、[[ar-c-80]]、[[ar-c-90]]
+- 新增概念：[[fraud-risk]]、[[inventory-and-litigation]]、[[external-confirmations]]、[[subsequent-events]]、[[going-concern]]、[[emphasis-of-matter]]、[[auditor-independence]]、[[single-audit]]
+- 新增分析：[[engagement-types-comparison]]
+- 更新：[[overview]]、[[audit-risk-model]]、[[audit-opinion-types]]、[[critical-audit-matters]]、[[as-2201]]、[[as-3101]]、[[aicpa-au-c-standards]]、[[pcaob-auditing-standards]]、[[aicpa]]、[[pcaob-vs-aicpa-standards]]
+- 解決待查證：AS 2201 缺失定義、AS 3105 編號
+- 新增待查證：5 項（見 [[src-rag-audit-cards]]）；新增差異：CAM 條件數目
+
+## [2026-11-16] schema | 新增「批次匯入」命名規則
+- AGENTS.md 第 4 節：一批多個原始檔放在 `raw/YYYY-MM-DD-slug/` 子資料夾，保留原檔名，只建一個 source 頁
+
+## [2026-11-16] schema | 新增「貼上文章自動 Ingest」規則
+- AGENTS.md 新增 6.0：使用者貼上的文章一律先逐字存到 `raw/`，再建立或更新 wiki 頁面、index.md、log.md
+
+## [2026-11-16] ingest | 美國審計架構入門筆記
+- 來源：`raw/2026-11-16-us-audit-primer.md` → [[src-us-audit-primer]]
+- 新增機構：[[pcaob]]、[[aicpa]]、[[sec]]、[[sarbanes-oxley-act]]
+- 新增準則：[[pcaob-auditing-standards]]、[[aicpa-au-c-standards]]、[[as-2201]]、[[as-3101]]
+- 新增概念：[[audit-risk-model]]、[[materiality]]、[[audit-opinion-types]]、[[critical-audit-matters]]
+- 新增分析：[[pcaob-vs-aicpa-standards]]
+- 更新：[[overview]]
+- 待查證：PCAOB 新準則生效日、AS 3105 編號、AS 2201 缺失定義、GAGAS 頁面
+
+## [2026-11-16] init | 建立專案
+- 建立 AGENTS.md、資料夾結構、templates/、網站閱讀器與 tools/lint.py

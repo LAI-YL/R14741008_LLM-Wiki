@@ -1,0 +1,18 @@
+Standard: AT-C Section 215 (SSAE)
+Title (En): Agreed-Upon Procedures Engagements (AUP)
+Title (Zh): 協議程序案件 (AUP)
+Category: SSAE (AT-C)
+Domain: 協議程序案件
+Scope: 委任人指定之特定程序與標的
+Related PCAOB Standard: N/A
+
+Summary (核心規範):
+會計師僅嚴格執行委任人所指定之具體程序，並客觀羅列『事實發現報告 (Report on Findings)』。會計師『不提供任何確信 (No Assurance)』、不出具意見、亦不評估程序之適當性。
+
+Exam Trap (考試陷阱):
+⚠️ 必考大忌：AUP 報告中嚴禁出現『查核無誤』、『合理保證』等意見詞眼！且報告『必須限制使用對象 (Restricted Use)』，僅供協議程序之委任雙方使用！
+
+TBS Tip (實務要點):
+執行 AUP 案件『仍必須具備獨立性』。委任人需自行對程序的充分性與適切性承擔全部責任。
+
+Keywords: 215, aup, agreed-upon procedures, no assurance, findings, restricted use, 協議程序, 無確信, 事實發現, 限制使用

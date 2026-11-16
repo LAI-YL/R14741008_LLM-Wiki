@@ -1,0 +1,18 @@
+Standard: Single Audit Reporting Package
+Title (En): Single Audit Reporting Package & Questioned Costs
+Title (Zh): 單一審計全套報告與存疑成本
+Category: Single Audit
+Domain: 單一審計報告組合
+Scope: 受查者、主查會計師、聯邦監督機關 (FAC)
+Related PCAOB Standard: OMB Compliance Supplement
+
+Summary (核心規範):
+單一審計要求提交完整的查核套件（Reporting Package）：(1) 財報查核意見、(2) GAGAS 內控與合規報告、(3) 各重大聯邦計畫合規性查核意見（Opinion on Compliance for Major Programs）、(4) 聯邦補助支出時程表 (SEFA)、(5) 查核缺失與存疑成本明細表（Schedule of Findings and Questioned Costs）。
+
+Exam Trap (考試陷阱):
+⚠️ 存疑成本通報門檻：個別已知之存疑成本（Known Questioned Costs）若『超過 $50,000 美元』，會計師必須在報告中具體通報此缺失！
+
+TBS Tip (實務要點):
+覆蓋率規則（Percentage of Coverage Rule）：所審計之重大計畫支出必須涵蓋至少 40% 的聯邦支出總額；若符合評定為低風險受查者（Low-Risk Auditee），門檻可放寬降至 20%！
+
+Keywords: single audit package, sefa, questioned costs, 50000, 5萬門檻, percentage of coverage, low risk auditee, 存疑成本, 50000門檻, 40趴覆蓋率, 20趴低風險

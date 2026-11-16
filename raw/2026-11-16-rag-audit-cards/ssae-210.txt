@@ -1,0 +1,18 @@
+Standard: AT-C Section 210 (SSAE)
+Title (En): Review Engagements under SSAE
+Title (Zh): 確信複核案件（有限確信規範）
+Category: SSAE (AT-C)
+Domain: 複核確信案件
+Scope: 非歷史財務報表標的
+Related PCAOB Standard: N/A
+
+Summary (核心規範):
+會計師提供『有限確信 (Limited Assurance / Negative Assurance)』。程序以向管理階層詢問（Inquiry）及分析性程序（Analytical Procedures）為主，不出具深入實質性測試與控制測試。
+
+Exam Trap (考試陷阱):
+⚠️ 報告用語辨析：結論以消極文字表述：『Based on our review, we are not aware of any material modifications that should be made...』。若需要合理確信，絕不能委任 Review！
+
+TBS Tip (實務要點):
+執行 SSAE Review 仍『必須具備獨立性』。此點與 SSARS Compilation 完全不同！
+
+Keywords: 210, ssae review, limited assurance, negative assurance, we are not aware, 確信複核, 有限確信

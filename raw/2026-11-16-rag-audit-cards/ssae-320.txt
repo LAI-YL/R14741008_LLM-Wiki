@@ -1,0 +1,18 @@
+Standard: AT-C Section 320 / SOC Reports
+Title (En): Reporting on Controls at a Service Organization (SOC 1 & SOC 2)
+Title (Zh): 服務機構控制查核報告 (SOC 1 與 SOC 2)
+Category: SSAE (AT-C)
+Domain: 服務機構控制報告
+Scope: 雲端服務商、薪資代工廠、SaaS 資料中心等服務機構
+Related PCAOB Standard: Service Organizations
+
+Summary (核心規範):
+SOC 1 聚焦於『客戶財務報導相關之內部控制 (ICOFR)』；SOC 2 聚焦於『安全性、可用性、處理完整性、保密性與隱私（Trust Services Criteria）』。報告分為 Type 1（單一時點設計之適當性）與 Type 2（涵蓋至少 6 個月之設計適當性及『作業有效性 Operating Effectiveness』）。
+
+Exam Trap (考試陷阱):
+⚠️ 考生常錯考點：主查會計師若要依賴服務機構的內控以降低控制風險（CR），『只有 Type 2 報告才具備效力』！Type 1 僅證明某一天設計存在，完全未測試實際運行，不可作為降低 CR 之依據！
+
+TBS Tip (實務要點):
+SOC 報告必讀要素：使用者組織控制責任（User Control Considerations, UCCs）——客戶端自己也必須落實的互補控制（如及時停用離職人員帳號）。
+
+Keywords: 320, soc, soc 1, soc 2, type 1, type 2, service organization, operating effectiveness, 服務機構, 作業有效性

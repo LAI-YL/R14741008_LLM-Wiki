@@ -1,0 +1,18 @@
+Standard: AU-C Section 570
+Title (En): The Auditor's Consideration of Going Concern
+Title (Zh): 查核人員對受查者繼續經營能力之考量
+Category: SAS / AU-C
+Domain: 繼續經營假設評估
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 2415
+
+Summary (核心規範):
+查核人員需評估自財務報表『發布日 (Issuance Date)』起算『至少一年 (One year after the date the financial statements are issued)』之繼續經營能力。若存在重大疑慮且已充分揭露，出具無保留意見但加註強調事項段（Emphasis-of-Matter Paragraph）。
+
+Exam Trap (考試陷阱):
+⚠️ 準則文字雷區：強調事項段中『必須』使用固定法定字眼『Substantial Doubt』與『Going Concern』，若查核人員自創模糊字眼（如 significant uncertainty），即構成報告不當！
+
+TBS Tip (實務要點):
+評估管理階層改善計畫（Mitigating Plans）：是否包含處分非核心資產、借新還舊延期債務、削減研發開支或發行新權益。計畫必須兼具『可行性 (Feasible)』與『有效性 (Effective)』。
+
+Keywords: 570, going concern, substantial doubt, one year, mitigating plans, 繼續經營, 重大疑慮, 強調事項, 2415

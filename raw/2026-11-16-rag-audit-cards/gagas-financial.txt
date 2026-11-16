@@ -1,0 +1,18 @@
+Standard: GAGAS Financial Audits (Yellow Book)
+Title (En): Government Auditing Standards: Financial Audits
+Title (Zh): 政府審計準則：財務審計與內部控制/合規性報告
+Category: GAGAS (Yellow Book)
+Domain: 政府財務查核與報告
+Scope: 受查者為政府機構、受聯邦資金補助之公私立大學或非營利組織
+Related PCAOB Standard: AICPA SAS + Additional GAGAS
+
+Summary (核心規範):
+在 AICPA SAS 審計意見之外，GAGAS 強制要求額外出具：『內部控制與法律法規遵循報告 (Report on Internal Control and on Compliance)』。明確通報所有重大缺失 (Material Weakness)、顯著缺失 (Significant Deficiency) 及違反法令或合約之詐欺不法情事。
+
+Exam Trap (考試陷阱):
+⚠️ 極易混淆考點：GAGAS 要求『出具內控報告』，但除非合約特別授權，否則『並不要求會計師對內部控制表達查核意見 (Does NOT express an opinion on internal control)』！報告僅陳述已測試之範圍與發現之缺失！
+
+TBS Tip (實務要點):
+若發現貪污受賄、舞弊或違反法令情事，GAGAS 規範在特定情形下（如管理階層知情卻怠於向執法機關報案），會計師必須直接向外部政府監管或司法機構通報！
+
+Keywords: gagas, yellow book, gao, government auditing, internal control report, compliance, 政府審計, 黃皮書, 內控合規報告, 不對內控表示意見

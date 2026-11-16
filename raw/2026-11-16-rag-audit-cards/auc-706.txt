@@ -1,0 +1,18 @@
+Standard: AU-C Section 706
+Title (En): Emphasis-of-Matter and Other-Matter Paragraphs
+Title (Zh): 強調事項段 (EOM) 與其他事項段 (OM)
+Category: SAS / AU-C
+Domain: 查核報告附加段落
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 3101
+
+Summary (核心規範):
+強調事項段（EOM）：報表已適當列報或揭露，但對使用者理解財報至關重要之事項（如重大期後火災、訴訟重大不確定性、會計原則變動）。其他事項段（OM）：與財報列報無關，但有助於使用者理解審計責任或法規責任之事項（如前期報表由其他會計師查核）。
+
+Exam Trap (考試陷阱):
+⚠️ 必分考點：強調事項段永遠『不影響無保留意見』！它不是修正式意見，段落標題必須明確包含『Emphasis-of-Matter』字樣，並指引讀者查閱財報附註之詳細揭露。
+
+TBS Tip (實務要點):
+口訣：『EOM 談財報內的事（有附註），OM 談審計報告自己的事（無附註）』。
+
+Keywords: 706, emphasis of matter, other matter, eom, om, 強調事項, 其他事項

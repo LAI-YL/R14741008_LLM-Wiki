@@ -1,0 +1,18 @@
+Standard: AICPA Code of Professional Conduct (ET 1.200)
+Title (En): Independence Rule for Covered Members
+Title (Zh): 會計師獨立性規範：受涵蓋人員與財務利益
+Category: Ethics (ET)
+Domain: 會計師獨立性規則
+Scope: 承辦審計、SSAE 確信及 SSARS 複核之會計師事務所全員
+Related PCAOB Standard: SEC Independence Rules
+
+Summary (核心規範):
+受涵蓋人員（Covered Members）及其直系親屬（Immediate Family：配偶、受撫養子女）在客戶端具備任何『直接財務利益 (Direct Financial Interest，如持有一股客戶股票)』，不論金額大小，立即徹底破壞獨立性！間接財務利益（如共同基金）則需達『重大 (Material)』方損害獨立性。
+
+Exam Trap (考試陷阱):
+⚠️ 經典考點：近親（Close Relatives：父母、兄弟姊妹、成年子女）若在客戶端擔任『財務報導關鍵管理職位 (Key Position)』，會破壞會計師的獨立性；但若僅為一般行政員工且投資不重大，則不損害獨立性。
+
+TBS Tip (實務要點):
+過期公費陷阱：若客戶積欠會計師事務所之上一年度專業服務費用『超過一年未清償』，會計師會被視為客戶之債權人，立即喪失當年度之獨立性！
+
+Keywords: ethics, independence, et 1.200, covered member, direct financial interest, close relative, unpaid fees, 職業道德, 獨立性, 直接利益, 過期公費

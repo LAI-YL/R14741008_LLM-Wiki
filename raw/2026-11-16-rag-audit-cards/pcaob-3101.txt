@@ -1,0 +1,18 @@
+Standard: PCAOB AS 3101
+Title (En): The Auditor's Report (Critical Audit Matters, CAMs)
+Title (Zh): 上市公司標準查核報告與關鍵查核事項 (CAMs)
+Category: PCAOB AS
+Domain: 上市公司查核報告格式
+Scope: 公開發行公司 (Issuers)
+Related PCAOB Standard: AU-C 701 (KAM)
+
+Summary (核心規範):
+上市公司查核報告必須包含：(1) 關鍵查核事項 (CAMs) 揭露、(2) 會計師事務所任期聲明（Tenure Statement，如 'We have served as the Company's auditor since 2012'）、(3) 獨立性聲明。
+
+Exam Trap (考試陷阱):
+⚠️ 考試陷阱：當查核人員出具『否定意見 (Adverse)』或『無法表示意見 (Disclaimer)』時，報告中『不得』通報 CAMs，避免分散或抵銷否定意見的嚴重性！
+
+TBS Tip (實務要點):
+CAM 判定標準兩條件：(1) 已向審計委員會溝通、(2) 涉及對財務報表具重大影響之帳目，且查核過程牽涉尤其具有挑戰性、主觀或複雜之專業判斷。
+
+Keywords: 3101, cams, critical audit matters, tenure, 關鍵查核事項, 事務所任期, 上市公司報告

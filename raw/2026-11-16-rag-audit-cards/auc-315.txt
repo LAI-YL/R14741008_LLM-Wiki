@@ -1,0 +1,18 @@
+Standard: AU-C Section 315
+Title (En): Understanding the Entity and Assessing Risks of Material Misstatement
+Title (Zh): 瞭解受查者及其環境並評估重大不實表達風險 (RMM)
+Category: SAS / AU-C
+Domain: 風險評估與內控了解
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 2110
+
+Summary (核心規範):
+建立審計風險模型：AR = RMM × DR，其中 RMM = 固有風險 (IR) × 控制風險 (CR)。查核人員需藉由瞭解受查者內部控制五大要素（COSO 架構：CRIME）來評估 RMM，並設計適當的進一步查核程序。
+
+Exam Trap (考試陷阱):
+⚠️ 觀念陷阱：查核人員『無法人為改變』受查者的 IR 或 CR，只能對其進行評估！查核人員唯一能主動調整以降低整體審計風險的是『偵查風險 (DR)』。
+
+TBS Tip (實務要點):
+若評估之 RMM 較高，查核人員應將可接受之 DR 調低，具體做法是：擴大實質性測試樣本、將測試時間點移至資產負債表日（而非期中），並採用更可靠之外部查核程序。
+
+Keywords: 315, rmm, audit risk, ir, cr, dr, coso, crime, 風險評估, 審計風險模型, 偵查風險, 2110

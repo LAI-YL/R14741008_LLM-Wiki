@@ -1,0 +1,18 @@
+Standard: AU-C Section 240
+Title (En): Consideration of Fraud in a Financial Statement Audit
+Title (Zh): 財務報表查核中對舞弊之考量
+Category: SAS / AU-C
+Domain: 審計規劃與舞弊評估
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: PCAOB AS 2401
+
+Summary (核心規範):
+查核人員必須保持高度專業懷疑態度（Professional Skepticism）。掌握舞弊三角（Fraud Triangle）：誘因/壓力（Incentive/Pressure）、機會（Opportunity）、態度/合理解釋（Rationalization）。
+
+Exam Trap (考試陷阱):
+⚠️ 必背考點：每一項審計案件皆『必須推定』存在兩大重大舞弊風險：(1) 收入認列之不實表達、(2) 管理階層凌駕控制（Management Override）。此推定不得藉由一般風險評估而直接排除！
+
+TBS Tip (實務要點):
+TBS 常考情境：管理階層利用期末未經授權之非常規日記帳分錄調整獲利，查核人員必須測試全年度（特別是期末）之日記帳分錄。
+
+Keywords: 240, fraud, fraud triangle, revenue recognition, management override, 舞弊三角, 管理階層凌駕, 收入認列, 2401

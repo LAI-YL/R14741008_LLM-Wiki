@@ -1,0 +1,18 @@
+Standard: AR-C Section 70 (SSARS)
+Title (En): Preparation of Financial Statements
+Title (Zh): 財務報表編製服務 (Preparation)
+Category: SSARS (AR-C)
+Domain: 財務報表編製服務
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: N/A
+
+Summary (核心規範):
+協助管理階層編製財務報表，但會計師『不提供任何確信 (No Assurance)』。會計師『不需出具任何形式的書面報告』，但必須在報表每一頁醒目標記：『No CPA provides any assurance on these financial statements』。
+
+Exam Trap (考試陷阱):
+⚠️ 獨立性盲點：執行 Preparation 案件『完全不要求會計師具備獨立性』！因為沒有出具任何審計或確信報告，亦無需在報表特別揭露是否具備獨立性。
+
+TBS Tip (實務要點):
+若管理階層不允許在每頁加註免責聲明，會計師必須出具正式免責聲明書，或直接終止委任合約。
+
+Keywords: 70, preparation, ssars, no assurance, no report, 編製報表, 無確信, 免出報告

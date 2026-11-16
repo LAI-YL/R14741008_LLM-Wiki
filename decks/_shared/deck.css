@@ -1,0 +1,206 @@
+/* 美國審計知識資料庫 — 共用簡報樣式（主題：明亮卡片，見檔案最後）
+ * 畫布固定 1280×720（16:9），依視窗等比縮放。
+ * 頁型：cover／agenda／section／points／compare／key／figure／figure-right／summary
+ */
+:root {
+  --bg: #F7F5EF;
+  --paper: #FFFFFF;
+  --ink: #1D2433;
+  --ink-soft: #5A6275;
+  --primary: #1F3A5F;
+  --primary-soft: #E6ECF4;
+  --accent: #C8892B;
+  --accent-soft: #FBF1E0;
+  --danger: #A63D32;
+  --danger-soft: #F8E7E4;
+  --info: #2F6C9F;
+  --info-soft: #E7F0F8;
+  --line: #E2DED3;
+  --sans: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", Georgia, serif;
+  --mono: "SF Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; background: #12161F; overflow: hidden; font-family: var(--sans); color: var(--ink); }
+a { color: var(--primary); text-decoration: none; border-bottom: 1px dashed currentColor; }
+
+.stage { position: absolute; left: 50%; top: 50%; width: 1280px; height: 720px; transform-origin: center center; }
+.slide {
+  position: absolute; inset: 0; display: none; overflow: hidden;
+  background: var(--bg); padding: 64px 88px 80px;
+}
+.slide.active { display: flex; flex-direction: column; }
+.slide-body { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+
+/* 文字 */
+.slide h1 { font-family: var(--serif); font-size: 56px; line-height: 1.25; margin: 0 0 20px; color: var(--primary); }
+.slide h2 {
+  font-family: var(--serif); font-size: 40px; line-height: 1.3; margin: 0 0 28px; color: var(--primary);
+  padding-bottom: 14px; border-bottom: 3px solid var(--line);
+}
+.slide h3 { font-size: 26px; margin: 12px 0 8px; }
+.slide p { font-size: 26px; line-height: 1.6; margin: 8px 0; }
+.slide ul, .slide ol { font-size: 26px; line-height: 1.55; margin: 6px 0; padding-left: 1.3em; }
+.slide li { margin: 8px 0; }
+.slide li li { font-size: 22px; }
+.slide strong { color: var(--primary); }
+.slide code { font-family: var(--mono); background: #ECEAE3; padding: .05em .3em; border-radius: 4px; font-size: .88em; }
+.slide .table-wrap { overflow: hidden; }
+.slide table { width: 100%; border-collapse: collapse; font-size: 22px; }
+.slide th, .slide td { border: 1px solid var(--line); padding: 10px 14px; text-align: left; vertical-align: top; }
+.slide th { background: var(--primary); color: #fff; }
+.slide tr:nth-child(even) td { background: #FBFAF6; }
+.slide .math-block { margin: 18px 0; font-size: 1.3em; text-align: center; }
+.slide .katex { font-size: 1.1em; }
+
+/* 提示框 */
+.slide .callout { margin: 18px 0 0; padding: 14px 22px; border-radius: 12px; border-left: 8px solid; font-size: 24px; }
+.slide .callout p { font-size: 24px; margin: 4px 0; }
+.slide .callout-title { font-weight: 700; font-size: 22px; }
+.slide .callout-exam { background: var(--accent-soft); border-color: var(--accent); }
+.slide .callout-exam .callout-title { color: #8A5A12; }
+.slide .callout-exam .callout-title::before { content: "★ "; }
+.slide .callout-conflict { background: var(--danger-soft); border-color: var(--danger); }
+.slide .callout-conflict .callout-title { color: var(--danger); }
+.slide .callout-stale { background: #EEEDE8; border-color: #9A9A92; }
+.slide .callout-todo { background: var(--info-soft); border-color: var(--info); }
+
+/* 頁尾 */
+.slide-foot {
+  position: absolute; left: 88px; right: 88px; bottom: 24px;
+  display: flex; gap: 24px; align-items: center; font-size: 15px; color: var(--ink-soft);
+}
+.foot-source { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.foot-title { opacity: .7; }
+.foot-num { font-variant-numeric: tabular-nums; }
+
+/* 頁型：封面 */
+.slide-cover { background: var(--primary); color: #fff; justify-content: center; padding-left: 120px; }
+.slide-cover .slide-body { justify-content: center; }
+.slide-cover h1 { color: #fff; font-size: 64px; max-width: 980px; }
+.slide-cover h1::after { content: ""; display: block; width: 120px; height: 6px; background: var(--accent); margin-top: 28px; }
+.slide-cover p { color: rgba(255,255,255,.85); font-size: 28px; }
+.slide-cover .cover-meta { position: absolute; left: 120px; bottom: 72px; font-size: 20px; color: rgba(255,255,255,.7); }
+.slide-cover .slide-foot, .slide-section .slide-foot { color: rgba(255,255,255,.6); }
+.slide-cover a, .slide-section a { color: #fff; }
+
+/* 頁型：目錄 */
+.slide-agenda ol { counter-reset: ag; list-style: none; padding: 0; }
+.slide-agenda ol > li { counter-increment: ag; display: flex; gap: 22px; align-items: baseline; font-size: 30px; margin: 14px 0; }
+.slide-agenda ol > li::before {
+  content: counter(ag, decimal-leading-zero); font-family: var(--serif); font-weight: 700; color: var(--accent); font-size: 34px; min-width: 56px;
+}
+
+/* 頁型：章節頁 */
+.slide-section { background: linear-gradient(135deg, var(--primary), #2B4C78); color: #fff; }
+.slide-section .slide-body { justify-content: center; }
+.slide-section h1, .slide-section h2 { color: #fff; border: 0; font-size: 60px; }
+.slide-section p { color: rgba(255,255,255,.85); }
+
+/* 頁型：重點句或公式 */
+.slide-key .slide-body { justify-content: center; align-items: center; text-align: center; }
+.slide-key h2 { border: 0; font-size: 34px; color: var(--ink-soft); margin-bottom: 18px; }
+.slide-key p { font-size: 40px; line-height: 1.5; font-family: var(--serif); max-width: 1000px; }
+.slide-key .math-block { font-size: 1.9em; }
+
+/* 頁型：比較（表格） */
+.slide-compare table { font-size: 21px; }
+
+/* 圖片 */
+.slide img { max-width: 100%; max-height: 420px; object-fit: contain; vertical-align: middle; }
+.slide p > img:only-child { display: block; margin: 8px auto; }
+
+/* 頁型：左圖右文 */
+.figure-wrap { flex-direction: row !important; gap: 56px; align-items: center; }
+.fig-img { flex: 0 0 44%; display: flex; justify-content: center; align-items: center; height: 100%; }
+.fig-img img { max-height: 500px; width: 100%; }
+.fig-text { flex: 1; min-width: 0; }
+.fig-text h2 { font-size: 38px; }
+
+/* 頁型：左文右圖 */
+.slide-figure-right .figure-wrap { flex-direction: row-reverse !important; }
+
+/* 頁型：總結 */
+.slide-summary ul { list-style: none; padding: 0; }
+.slide-summary ul > li { position: relative; padding-left: 48px; }
+.slide-summary ul > li::before {
+  content: "✓"; position: absolute; left: 0; top: 0; color: #fff; background: var(--primary);
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; margin-top: 4px;
+}
+
+/* 控制介面 */
+.progress { position: fixed; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.08); }
+.bar { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.notes-panel {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(900px, 92vw);
+  max-height: 32vh; overflow: auto; background: rgba(20,24,33,.94); color: #E8EAF0;
+  padding: 14px 20px; border-radius: 12px; font-size: 16px; line-height: 1.6; z-index: 5;
+}
+.notes-panel a { color: #9CC3EA; }
+.notes-panel .muted { color: #9AA1B2; }
+.overview {
+  position: fixed; inset: 0; background: rgba(18,22,31,.96); z-index: 10; padding: 40px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; align-content: start; overflow: auto;
+}
+.overview button {
+  text-align: left; padding: 14px; border-radius: 10px; border: 1px solid #39425A; background: #1D2433; color: #E8EAF0;
+  font: inherit; font-size: 15px; cursor: pointer; min-height: 90px;
+}
+.overview button span { display: block; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+.overview button.cur { border-color: var(--accent); }
+.help {
+  position: fixed; top: 12px; left: 50%; transform: translateX(-50%); color: #C9CED9; font-size: 13px;
+  background: rgba(20,24,33,.8); padding: 6px 14px; border-radius: 999px; transition: opacity .8s; z-index: 4;
+}
+.help.fade { opacity: 0; }
+.deck-error { color: #E8EAF0; padding: 60px; font-size: 18px; }
+.deck-error code { background: #2A3040; padding: 2px 6px; border-radius: 4px; }
+
+/* ===== 正式主題：明亮卡片（2026-11-16 使用者選定風格 B）=====
+ * 白底、頂部藍琥珀色帶、螢光筆標題、要點用圓角卡片；圖片（含貓頭鷹）不加底色框。 */
+.slide { background: #FFFFFF; font-family: var(--sans); }
+.slide::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 12px; background: linear-gradient(90deg, var(--primary) 0 70%, var(--accent) 70%); }
+.slide h1, .slide h2 { font-family: var(--sans); font-weight: 800; letter-spacing: .02em; }
+.slide h2 {
+  border: 0; padding: 0; display: inline-block; align-self: flex-start; font-size: 44px;
+  background: linear-gradient(transparent 62%, #FCE3B4 62%); margin-bottom: 34px;
+}
+.slide ul { list-style: none; padding: 0; }
+.slide ul > li {
+  background: #F1F5FB; border-radius: 18px; padding: 16px 24px; margin: 14px 0;
+  border-left: 8px solid var(--primary);
+}
+.slide strong { color: #B06F12; }
+/* 封面：深色底；貓頭鷹用貼紙版（順著輪廓的米白描邊、圓角收邊），避免融入背景 */
+.slide-cover { background: #13233A; color: #FFFFFF; }
+.slide-cover::before { background: var(--accent); }
+.slide-cover::after {
+  content: ""; position: absolute; right: 90px; top: 50%; transform: translateY(-50%); width: 400px; height: 420px;
+  background: url("../../assets/mascot/owl-wave-sticker.svg") no-repeat center / contain;
+}
+.slide-cover h1 { color: #FFFFFF; font-size: 70px; max-width: 640px; background: none; }
+.slide-cover h1::after { background: var(--accent); height: 10px; border-radius: 5px; }
+.slide-cover p { color: #C9D2E0; }
+.slide-cover .cover-meta, .slide-cover .slide-foot { color: #8E9BB3; }
+.slide-cover a { color: #FFFFFF; }
+.fig-img { height: 520px; }
+.slide-key .math-block { background: #F1F5FB; border-radius: 28px; padding: 40px 60px; }
+.slide table { border-collapse: separate; border-spacing: 0; border-radius: 18px; overflow: hidden; border: 2px solid #DCE4EF; }
+.slide th { background: var(--primary); }
+.slide th, .slide td { border: 0; border-bottom: 1px solid #DCE4EF; padding: 16px 20px; }
+.slide .callout { border-radius: 18px; border-left-width: 0; border: 2px solid var(--accent); }
+.slide-summary ul > li { border-left-color: var(--accent); }
+.slide-summary ul > li::before { background: var(--accent); left: 18px; top: 14px; }
+.slide-summary ul > li { padding-left: 70px; }
+.slide-foot { color: #8A93A6; }
+
+/* 列印／存 PDF：每頁一張投影片 */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  html, body { background: #fff; overflow: visible; height: auto; }
+  .stage { position: static; transform: none !important; width: 1280px; height: auto; }
+  .slide { display: flex !important; flex-direction: column; position: relative; width: 1280px; height: 720px; page-break-after: always; break-after: page; }
+  .progress, .notes-panel, .overview, .help { display: none !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

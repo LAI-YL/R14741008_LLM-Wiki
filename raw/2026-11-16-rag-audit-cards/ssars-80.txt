@@ -1,0 +1,18 @@
+Standard: AR-C Section 80 (SSARS)
+Title (En): Compilation Engagements
+Title (Zh): 財務報表代編服務 (Compilation)
+Category: SSARS (AR-C)
+Domain: 財務報表代編服務
+Scope: 非公開發行公司 (Non-Issuers)
+Related PCAOB Standard: N/A
+
+Summary (核心規範):
+會計師協助閱讀並編排呈現財務報表，但『不提供任何確信 (No Assurance)』。與 Preparation 不同，代編案件『必須出具正式代編報告 (Compilation Report)』，並於報表每頁標註『See Accountant's Compilation Report』。
+
+Exam Trap (考試陷阱):
+⚠️ 必背獨立性特例：執行 Compilation『不要求會計師具備獨立性』！但——如果會計師『缺乏獨立性 (Lack of Independence)』，『必須在代編報告的最後一段明確聲明：We are not independent with respect to XYZ Company』！
+
+TBS Tip (實務要點):
+會計師不需要在報告中解釋為何缺乏獨立性，只需具體說明缺乏獨立性之事實即可。
+
+Keywords: 80, compilation, ssars, no assurance, independence not required, must disclose lack of independence, 代編, 無確信, 揭露不具獨立性
