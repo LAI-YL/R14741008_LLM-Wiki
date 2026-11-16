@@ -110,16 +110,53 @@
   const linkRe = (slug) => new RegExp(`\\[\\[${slug.replace(/[-]/g, "\\-")}(\\||#|\\]\\])`);
   function wikiBacklinks(slug) {
     const re = linkRe(slug);
-    return [...pages.values()].filter((p) => p.slug !== slug && cache.get(p.path) && re.test(cache.get(p.path).body));
+    return [...pages.values()].filter((p) => p.slug !== slug && !isSourceSection(p.category) && cache.get(p.path) && re.test(cache.get(p.path).body));
   }
   function noteBacklinks(slug) {
     const re = linkRe(slug);
     return [...notes.values()].filter((n) => cache.get(n.path) && re.test(cache.get(n.path).body));
   }
 
+  // ---------- 前台／後台 ----------
+  // 資料來源頁屬於後台：前台的目錄、搜尋、反向連結都不列出
+  const isSourceSection = (name) => name.includes("資料來源");
+  const isSource = (slug) => { const p = pages.get(slug); return !!p && isSourceSection(p.category); };
+  // 維護者專區密碼：只存 SHA-256 雜湊值。這是靜態網站上的簡易門檻，不是真正的權限控管
+  // （GitHub 上的原始檔仍是公開的）。
+  const ADMIN_HASH = "420dcd632bde6df72babf3bd372689f6a30d55344ed966f865c2f1811330489a";
+  let adminOk = false;
+  try { adminOk = sessionStorage.getItem("admin-ok") === ADMIN_HASH; } catch (e) { /* 無法使用 sessionStorage 時只記在記憶體 */ }
+  const isAdminRoute = (h) => h === "#/admin" || h === "#/log" || h === "#/reading" || h === "#/assets" ||
+    h === "#/docs" || h.startsWith("#/d/") || (h.startsWith("#/p/") && isSource(h.slice(4)));
+  async function sha256(text) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+  function showLock() {
+    renderToc(null); setNav("admin");
+    content.innerHTML = `<div class="lock">
+      <h1>維護者專區</h1>
+      <p class="muted">這裡是維護知識庫用的後台資訊，請輸入密碼。</p>
+      <form id="lockForm"><input id="lockInput" type="password" placeholder="密碼" autocomplete="current-password" autofocus>
+      <button type="submit" class="btn primary">進入</button></form>
+      <p id="lockMsg" class="lock-msg" role="alert"></p>
+      <p><a href="#/">← 回講義庫</a></p></div>`;
+    $("#lockForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let ok = false;
+      try { ok = (await sha256($("#lockInput").value.trim())) === ADMIN_HASH; }
+      catch (err) { $("#lockMsg").textContent = "這個瀏覽器無法驗證密碼（需要 https 或 localhost）。"; return; }
+      if (!ok) { $("#lockMsg").textContent = "密碼不正確，請再試一次。"; $("#lockInput").select(); return; }
+      adminOk = true;
+      try { sessionStorage.setItem("admin-ok", ADMIN_HASH); } catch (err) { /* 忽略 */ }
+      route();
+    });
+    document.title = "維護者專區｜美國審計知識資料庫";
+  }
+
   // ---------- 畫面零件 ----------
   function renderToc(active) {
-    $("#toc").innerHTML = sections.map((sec) => `
+    $("#toc").innerHTML = sections.filter((sec) => !isSourceSection(sec.name)).map((sec) => `
       <h3>${esc(sec.name)}</h3>
       <ul>${sec.slugs.map((s) => {
         const p = pages.get(s);
@@ -160,14 +197,15 @@
 
   // ---------- 各畫面 ----------
   async function showWikiPage(slug) {
-    renderToc(slug); setNav("wiki");
+    const src = isSource(slug);
+    renderToc(slug); setNav(src ? "admin" : "wiki");
     const p = pages.get(slug);
     if (!p) { content.innerHTML = notFound("頁面"); return; }
     const { meta, body } = await loadDoc(p.path);
     if (!allLoaded) await loadAll();
     const back = wikiBacklinks(slug);
     const nback = noteBacklinks(slug);
-    renderInto(content, `${metaBar(meta)}<article class="md">${MD.render(body, ctxFor("wiki/"))}</article>
+    renderInto(content, `${src ? backTo("#/admin", "維護者專區") : ""}${metaBar(meta)}<article class="md">${MD.render(body, ctxFor("wiki/"))}</article>
       <section class="backlinks"><h4>反向連結（${back.length}）— 哪些頁面提到這一頁</h4>
       ${back.length ? back.map((b) => chip(`#/p/${b.slug}`, esc(b.title))).join("") : '<span class="muted">目前沒有其他頁面連到這裡</span>'}
       ${nback.length ? `<h4 class="sub">引用這一頁的研究筆記（${nback.length}）</h4>${nback.map((n) => chip(`#/n/${n.stem}`, esc(n.title))).join("")}` : ""}
@@ -314,7 +352,8 @@
     const tile = (href, title, desc) => `<a class="admin-tile" href="${href}"><b>${title}</b><span>${desc}</span></a>`;
     renderInto(content, `<div class="page-meta"><span class="badge">維護者專區</span></div>
       <article class="md"><h1>維護者專區</h1>
-      <p>給維護這個知識庫的人（使用者與 AI）看的後台資訊。學習者只需要使用上方的「講義庫」與「知識庫」。</p></article>
+      <p>給維護這個知識庫的人（使用者與 AI）看的後台資訊。學習者只需要使用上方的「講義庫」與「知識庫」。</p>
+      <p><a href="#/admin" id="lockBtn">🔒 鎖上維護者專區</a></p></article>
       <div class="admin-grid">
         ${tile("#/d/index", "專案說明", "工作流程圖、執行紀錄、反思")}
         ${tile("#/reading", "建議文獻清單", `研究筆記列出的官方文獻；待下載 ${pending} 筆`)}
@@ -324,6 +363,11 @@
       <section class="md"><h2>資料來源（${srcs.length}）</h2><p class="muted">每份原始資料的摘要與「待查證／疑點」。</p>
       <ul>${srcs.map((sl) => `<li><a href="#/p/${sl}">${esc(pages.get(sl).title)}</a></li>`).join("")}</ul>
       <h2>最近更新</h2><ul>${recent}</ul></section>`);
+    $("#lockBtn").addEventListener("click", (e) => {
+      e.preventDefault(); adminOk = false;
+      try { sessionStorage.removeItem("admin-ok"); } catch (err) { /* 忽略 */ }
+      location.hash = "#/";
+    });
     document.title = "維護者專區｜美國審計知識資料庫";
   }
 
@@ -332,6 +376,7 @@
     $("#sidebar").classList.remove("open");
     window.scrollTo(0, 0);
     try {
+      if (isAdminRoute(hash) && !adminOk) return showLock();
       if (hash.startsWith("#/p/")) return await showWikiPage(hash.slice(4));
       if (hash.startsWith("#/n/")) return await showNote(hash.slice(4));
       if (hash.startsWith("#/s/")) return await showSlides(hash.slice(4));
@@ -354,7 +399,7 @@
     q = q.trim().toLowerCase();
     if (!q) { box.hidden = true; $("#toc").hidden = false; return; }
     const items = [
-      ...[...pages.values()].map((p) => ({ href: `#/p/${p.slug}`, title: p.title, summary: p.summary, path: p.path, kind: "" })),
+      ...[...pages.values()].filter((p) => !isSourceSection(p.category)).map((p) => ({ href: `#/p/${p.slug}`, title: p.title, summary: p.summary, path: p.path, kind: "" })),
       ...[...notes.values()].map((n) => ({ href: `#/n/${n.stem}`, title: n.title, summary: n.summary, path: n.path, kind: "筆記" })),
     ];
     const reQ = new RegExp(esc(q).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "ig");

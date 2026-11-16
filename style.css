@@ -297,3 +297,9 @@ details.maint { margin: 24px 0; border: 1px dashed var(--line); border-radius: v
 details.maint summary { cursor: pointer; color: var(--ink-soft); font-size: 14px; }
 .mobile-nav a.active { border-color: var(--primary); color: var(--primary); }
 @media (max-width: 860px) { .hero-lessons img { width: 90px; } .hero-lessons h1 { font-size: 26px; } }
+/* 維護者專區密碼頁 */
+.lock { max-width: 420px; margin: 40px auto; text-align: center; }
+.lock form { display: flex; gap: 8px; margin: 18px 0 8px; }
+.lock input { flex: 1; padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; font: inherit; }
+.lock .btn { cursor: pointer; font: inherit; font-weight: 600; }
+.lock-msg { color: #B03A2E; min-height: 1.5em; font-size: 14px; }
